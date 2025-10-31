@@ -148,31 +148,31 @@ function Home(){
           {/* DTx */}
           <NavLink to="/cases/dtx" className="group bg-white p-6 rounded-xl shadow hover:shadow-lg transition block">
             <h3 className="text-xl font-bold mb-2">Digital Therapeutics (DTx)</h3>
-            <p className="text-sm">국내 최초 디지털치료제 IND 승인 경험.</p>
+            <p className="text-sm">국내 최초 디지털치료제 IND 승인 경험</p>
           </NavLink>
 
           {/* AI-SaMD */}
           <NavLink to="/cases/ai-samd" className="group bg-white p-6 rounded-xl shadow hover:shadow-lg transition block">
             <h3 className="text-xl font-bold mb-2">AI-SaMD / Diagnostic AI</h3>
-            <p className="text-sm">다양한 적응증·평가변수 경험 보유.</p>
+            <p className="text-sm">다양한 적응증·평가변수 경험 보유</p>
           </NavLink>
 
           {/* IVD (Qualitative) */}
           <NavLink to="/cases/ivd-qual" className="group bg-white p-6 rounded-xl shadow hover:shadow-lg transition block">
             <h3 className="text-xl font-bold mb-2">IVD (Qualitative)</h3>
-            <p className="text-sm">2016년부터 다양한 적응증 임상 경험.</p>
+            <p className="text-sm">2016년부터 다양한 적응증 임상 경험</p>
           </NavLink>
 
           {/* IVD (Quantitative) */}
           <NavLink to="/cases/ivd-quant" className="group bg-white p-6 rounded-xl shadow hover:shadow-lg transition block">
             <h3 className="text-xl font-bold mb-2">IVD (Quantitative)</h3>
-            <p className="text-sm">정량 임상통계 방법론 정립·검증 경험.</p>
+            <p className="text-sm">정량 임상통계 방법론 정립·검증 경험</p>
           </NavLink>
 
           {/* Medical Supplies */}
           <NavLink to="/cases/med-supplies" className="group bg-white p-6 rounded-xl shadow hover:shadow-lg transition block">
             <h3 className="text-xl font-bold mb-2">Medical Supplies / Accessorie</h3>
-            <p className="text-sm">혈압·생활용품 등 다양한 현장 경험.</p>
+            <p className="text-sm">혈압·생활용품 등 다양한 현장 경험</p>
           </NavLink>
         </div>
       </section>
@@ -452,7 +452,7 @@ function ServicesPage(){
           <QA q="EDC/DM만 별도로 맡길 수 있나요?" a="예. CDASH/SDTM 매핑 고려한 CRF, 데이터 품질지표 설정과 함께 단독 모듈로 수행합니다."/>
           <QA q="AI-SaMD의 임상 설계는 기능별로 어떻게 달라지나요?" a="AI-SaMD는 예측·진단·치료보조 등 기능 틀은 유사하지만, 실제 설계는 적응증의 특성에 따라 달라집니다.
 예를 들어 폐렴 진단 AI는 기존 판독 대비 민감도·특이도 및 AUC 입증이 핵심이며, 이를 위해 데이터셋 다양성, Gold standard 정의, 독립 검증 코호트 확보가 필수입니다."/>
-          <QA q="IMFDS의 임상적 성능시험과 EU IVDR의 Clinical Performance Evaluation은 무엇이 다른가요?" a="EU IVDR에서는 문헌, 임상 경험, 임상적 성능시험 데이터를 모두 통합하여 Clinical Evidence로 정의하고, 이를 Clinical Performance Evaluation(CPE) 안에서 종합적으로 검토합니다. 반면 MFDS는 임상적 성능시험에 대해 별도의 사전 승인 절차는 없으나, IRB 승인 하에 수행된 계획서와 결과보고서를 허가 심사 시 함께 검토합니다. 따라서 국내 허가에서는 문헌·임상경험만으로는 충분하지 않으며, 실제 환자 기반의 임상적 성능시험 자료 제출이 핵심입니다."/>
+          <QA q="IVDR의 CPE와 임상 성능시험은 무엇이 다른가요?" a="문헌 기반 Clinical Evaluation과 Prospective Performance Study의 역할과 제출 문서를 구분해 설계합니다."/>
         </div>
       </div>
     </PageLayout>
@@ -1191,6 +1191,8 @@ function ContactPage() {
 
 // ---- Router App ----
 import ScrollToTop from "./ScrollToTop";
+import FixedActions from "./FixedActions";
+import BackOnScroll from "./BackOnScroll";
 import BackToTop from "./BackToTop";
 
 export default function App(){
@@ -1226,7 +1228,11 @@ export default function App(){
           <Route path="*" element={<Navigate to="/" replace/>} />
         </Routes>
         <Footer/>        
-        <BackToTop />
+        {/* 우하단 액션들 한 줄로 정렬 & 간격 제어 */}
+        <FixedActions>
+          <BackOnScroll threshold={80}/>  {/* ← */}
+          <BackToTop threshold={200}/>     {/* ↑ */}
+        </FixedActions>
       </Router>
     </div>
   );

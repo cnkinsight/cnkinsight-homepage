@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function BackToTop({ threshold = 80 }) {
+export default function BackOnScroll({ threshold = 200 }) {
   const [mounted, setMounted] = useState(false);
   const [visible, setVisible] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const onScroll = () => {
@@ -20,15 +22,13 @@ export default function BackToTop({ threshold = 80 }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, [threshold, mounted]);
 
-  const toTop = () =>
-    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-
+  const goBack = () => (window.history.length > 1 ? navigate(-1) : navigate("/"));
   if (!mounted) return null;
 
   return (
     <button
-      onClick={toTop}
-      aria-label="맨 위로"
+      onClick={goBack}
+      aria-label="이전 페이지"
       className={`h-10 w-10 rounded-full shadow-sm transition-all duration-300 
                   flex items-center justify-center transform
                   ${
@@ -44,14 +44,14 @@ export default function BackToTop({ threshold = 80 }) {
     >
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
         <defs>
-          <linearGradient id="arrowGradU" x1="0" y1="0" x2="24" y2="24">
+          <linearGradient id="arrowGradL" x1="0" y1="0" x2="24" y2="24">
             <stop offset="0%" stopColor="#f5d37a" />
             <stop offset="100%" stopColor="#d08700" />
           </linearGradient>
         </defs>
         <polyline
-          points="6 15 12 9 18 15"
-          stroke="url(#arrowGradU)"
+          points="15 18 9 12 15 6"
+          stroke="url(#arrowGradL)"
           strokeWidth="3"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -60,3 +60,4 @@ export default function BackToTop({ threshold = 80 }) {
     </button>
   );
 }
+
