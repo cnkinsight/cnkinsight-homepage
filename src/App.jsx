@@ -186,7 +186,7 @@ function Home(){
       Insights
       </h2>
       <p className="text-gray-600 text-sm mb-8">
-      규제·임상·통계에 대한 C&K Insight의 관점을 공유합니다. 클릭하면 전체 개요 페이지로 이동합니다.
+      규제·임상·통계에 대한 C&KInsight의 관점을 공유합니다. 클릭하면 전체 개요 페이지로 이동합니다.
       </p>
       </NavLink>
 
@@ -388,7 +388,7 @@ function ServicesPage(){
         <NavLink to="/services/partial" className="group block bg-gray-50 hover:bg-white p-6 rounded-2xl border shadow-sm hover:shadow transition">
           <h3 className="text-2xl font-bold mb-2">Partial CRO (Flexible)</h3>
           <p className="text-sm mb-3">
-            필요한 구간만 선택: Protocol/SAP, CRA, <br />
+            필요한 구간만 선택: Protocol/SAP, 모니터링, <br />
             통계·CSR, 출판용 임상시험 등 모듈형 지원
           </p>
           <span className="ck-brand font-semibold group-hover:underline">자세히 보기 →</span>
