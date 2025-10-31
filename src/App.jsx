@@ -80,7 +80,7 @@ function Home(){
           C&KInsight는 의료기기 개발의 시작부터 허가까지, <br />Insight로 전략을 제시하는 파트너입니다.
         </p>
         <div className="space-x-4">
-          <button onClick={()=>navigate('/contact')} className="px-8 py-4 bg-white ck-brand font-bold rounded-full shadow hover:bg-gray-100 transition">허가 전략 상담하기</button>
+          <button onClick={()=>navigate('/contact')} className="px-8 py-4 bg-white ck-brand font-bold rounded-full shadow hover:bg-gray-100 transition">상담 신청하기</button>
           <button onClick={()=>navigate('/services')} className="px-8 py-4 border-2 border-white font-semibold rounded-full hover:bg-yellow-500 transition">서비스 보기</button>
         </div>
       </section>
@@ -179,36 +179,56 @@ function Home(){
 
       {/* Insights preview (텍스트만, 짧은 한 줄 설명) */}
       <section className="bg-gray-100 py-16 px-6">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-extrabold text-center ck-brand mb-8 tracking-tight">
-            Insights
-          </h2>
+      <div className="max-w-6xl mx-auto">
+      {/* ✅ Insights 전체로 이동할 수 있도록 타이틀에 NavLink 추가 */}
+      <NavLink to="/insights" className="block text-center group">
+      <h2 className="text-3xl font-extrabold ck-brand mb-2 tracking-tight group-hover:text-[#D08700] transition-colors">
+      Insights
+      </h2>
+      <p className="text-gray-600 text-sm mb-8">
+      규제·임상·통계에 대한 C&K Insight의 관점을 공유합니다. 클릭하면 전체 개요 페이지로 이동합니다.
+      </p>
+      </NavLink>
 
-          <div className="grid md:grid-cols-4 gap-6">
 
-            <NavLink to="/insights/samplesize" className="group bg-white p-6 rounded-xl border shadow-sm hover:shadow-md transition block">
-              <h3 className="text-lg font-bold mb-2">Sample Size Determination Journey</h3>
-              <p className="text-sm text-gray-600">Clinical success → right ‘n’ by rigorous stats.</p>
-            </NavLink>
+      <div className="grid md:grid-cols-4 gap-6">
+      <NavLink
+      to="/insights/samplesize"
+      className="group bg-white p-6 rounded-xl border shadow-sm hover:shadow-md transition block"
+      >
+      <h3 className="text-lg font-bold mb-2">Sample Size Determination Journey</h3>
+      <p className="text-sm text-gray-600">Clinical success → right ‘n’ by rigorous stats</p>
+      </NavLink>
 
-            <NavLink to="/insights/ai-samd" className="group bg-white p-6 rounded-xl border shadow-sm hover:shadow-md transition block">
-              <h3 className="text-lg font-bold mb-2">AI-SaMD: From Purpose to Endpoints</h3>
-              <p className="text-sm text-gray-600">Align endpoints with purpose; bridge to approval.</p>
-            </NavLink>
 
-            <NavLink to="/insights/dtx" className="group bg-white p-6 rounded-xl border shadow-sm hover:shadow-md transition block">
-              <h3 className="text-lg font-bold mb-2">DTx in the Clinical Ecosystem</h3>
-              <p className="text-sm text-gray-600">CBT, adherence, lifestyle—care beyond hospitals.</p>
-            </NavLink>
+      <NavLink
+      to="/insights/ai-samd"
+      className="group bg-white p-6 rounded-xl border shadow-sm hover:shadow-md transition block"
+      >
+      <h3 className="text-lg font-bold mb-2">AI-SaMD: From Purpose to Endpoints</h3>
+      <p className="text-sm text-gray-600">Align endpoints with purpose; bridge to approval</p>
+      </NavLink>
 
-            {/* Biomarkers → IVD 로 경로 변경 */}
-            <NavLink to="/insights/ivd" className="group bg-white p-6 rounded-xl border shadow-sm hover:shadow-md transition block">
-              <h3 className="text-lg font-bold mb-2">Biomarkers & Longitudinal Evidence</h3>
-              <p className="text-sm text-gray-600">Track over time to confirm clinical value.</p>
-            </NavLink>
 
-          </div>
-        </div>
+      <NavLink
+      to="/insights/dtx"
+      className="group bg-white p-6 rounded-xl border shadow-sm hover:shadow-md transition block"
+      >
+      <h3 className="text-lg font-bold mb-2">DTx in the Clinical Ecosystem</h3>
+      <p className="text-sm text-gray-600">CBT, adherence, lifestyle—care beyond hospitals</p>
+      </NavLink>
+
+
+      {/* Biomarkers → IVD 로 경로 변경 */}
+      <NavLink
+      to="/insights/ivd"
+      className="group bg-white p-6 rounded-xl border shadow-sm hover:shadow-md transition block"
+      >
+      <h3 className="text-lg font-bold mb-2">Biomarkers & Longitudinal Evidence</h3>
+      <p className="text-sm text-gray-600">Track over time to confirm clinical value</p>
+      </NavLink>
+      </div>
+      </div>
       </section>
 
 
@@ -217,7 +237,7 @@ function Home(){
       <section className="py-16 px-6 max-w-4xl mx-auto text-center">
         <h2 className="text-3xl font-extrabold mb-4 ck-brand tracking-tight">Start with Insight</h2>
         <p className="mb-6">귀사의 의료기기 임상 및 허가 전략, 지금 바로 상담해보세요.</p>
-        <button onClick={()=>navigate('/contact')} className="px-8 py-4 bg-yellow-500 text-white font-bold rounded-full shadow hover:bg-yellow-600 transition">전략 미팅 예약하기</button>
+        <button onClick={()=>navigate('/contact')} className="px-8 py-4 bg-yellow-500 text-white font-bold rounded-full shadow hover:bg-yellow-600 transition">상담 신청하기</button>
       </section>
     </main>
   );
@@ -273,7 +293,7 @@ function AboutPage(){
         {/* 수치/신뢰 지표 */}
         <section className="grid md:grid-cols-3 gap-6">
           <div className="p-6 bg-gray-50 rounded-xl border"><div className="text-3xl font-extrabold ck-brand">10+년</div><div className="text-sm mt-1">의료기기 임상/허가 컨설팅</div></div>
-          <div className="p-6 bg-gray-50 rounded-xl border"><div className="text-3xl font-extrabold ck-brand">50+건</div><div className="text-sm mt-1">프로토콜/CSR/제출 패키지</div></div>
+          <div className="p-6 bg-gray-50 rounded-xl border"><div className="text-3xl font-extrabold ck-brand">100+건</div><div className="text-sm mt-1">프로토콜/CSR/제출 패키지</div></div>
           <div className="p-6 bg-gray-50 rounded-xl border"><div className="text-3xl font-extrabold ck-brand">DTx · AI‑SaMD · IVD</div><div className="text-sm mt-1">최신 분야 특화 역량</div></div>
         </section>
 
@@ -317,7 +337,7 @@ function AboutPage(){
               </LegendItem>
 
               <LegendItem title="임상 운영·분석:">
-                Protocol/SAP, CRA, EDC/DM 등 <span className="font-medium">실행 가능한 설계와 분석 지원</span>을 제공합니다.
+                Protocol/SAP, Monitoring, EDC/DM 등 <span className="font-medium">실행 가능한 설계와 분석 지원</span>을 제공합니다.
               </LegendItem>
 
               <LegendItem title="규제 허가:">
@@ -337,7 +357,7 @@ function AboutPage(){
           </div>
           <div className="p-6 rounded-xl border">
             <h4 className="font-semibold mb-2">Flexible Engagement</h4>
-            <p className="text-sm">Full‑Scope 또는 Partial 모듈(Protocol/SAP, CRA, 통계·CSR 등)로 상황에 맞춰 계약 가능합니다.</p>
+            <p className="text-sm">Full‑Scope 또는 Partial 모듈(Protocol/SAP, 모니터링, 통계·CSR 등)로 상황에 맞춰 계약 가능합니다.</p>
           </div>
         </section>
       </div>
@@ -368,7 +388,7 @@ function ServicesPage(){
         <NavLink to="/services/partial" className="group block bg-gray-50 hover:bg-white p-6 rounded-2xl border shadow-sm hover:shadow transition">
           <h3 className="text-2xl font-bold mb-2">Partial CRO (Flexible)</h3>
           <p className="text-sm mb-3">
-            필요한 구간만 선택: Protocol/SAP, CRA(On-Demand), <br />
+            필요한 구간만 선택: Protocol/SAP, CRA, <br />
             통계·CSR, 출판용 임상시험 등 모듈형 지원
           </p>
           <span className="ck-brand font-semibold group-hover:underline">자세히 보기 →</span>
@@ -410,7 +430,7 @@ function ServicesPage(){
             <tr>
               <td className="p-4">책임 범위</td>
               <td className="p-4">계획·운영·통계·CSR·허가까지 전 주기</td>
-              <td className="p-4">선택 모듈만 수행(예: SAP/통계, CRA 등)</td>
+              <td className="p-4">선택 모듈만 수행(예: SAP/통계, 모니터링 등)</td>
             </tr>
             <tr>
               <td className="p-4">일정/예산 유연성</td>
@@ -422,11 +442,7 @@ function ServicesPage(){
               <td className="p-4">임상 경험이 적거나 속도를 최우선으로 할 때</td>
               <td className="p-4">일부 기능은 인하우스로 처리 가능한 경우</td>
             </tr>
-            <tr>
-              <td className="p-4">산출물 품질관리</td>
-              <td className="p-4">단일 품질체계로 end‑to‑end 관리</td>
-              <td className="p-4">모듈 경계 기준으로 QA/검증 실시</td>
-            </tr>
+            
           </tbody>
         </table>
       </div>
@@ -435,7 +451,7 @@ function ServicesPage(){
       <div className="mb-10">
         <h3 className="text-xl font-bold mb-3">표준 수행 프로세스 (예)</h3>
         <ol className="grid md:grid-cols-6 gap-4">
-          {['Kick‑off','Protocol/SAP','Site/CRA','EDC/DM','Stats & CSR','Submission'].map((s,i)=> (
+          {['Kick‑off','Protocol/SAP','CM/Monitoring','EDC/DM','Stats & CSR','Submission'].map((s,i)=> (
             <li key={s} className="bg-white rounded-xl border p-4 text-center shadow-sm">
               <div className="text-3xl font-extrabold ck-brand">{i+1}</div>
               <div className="mt-1 text-sm">{s}</div>
@@ -452,7 +468,7 @@ function ServicesPage(){
           <QA q="EDC/DM만 별도로 맡길 수 있나요?" a="예. CDASH/SDTM 매핑 고려한 CRF, 데이터 품질지표 설정과 함께 단독 모듈로 수행합니다."/>
           <QA q="AI-SaMD의 임상 설계는 기능별로 어떻게 달라지나요?" a="AI-SaMD는 예측·진단·치료보조 등 기능 틀은 유사하지만, 실제 설계는 적응증의 특성에 따라 달라집니다.
 예를 들어 폐렴 진단 AI는 기존 판독 대비 민감도·특이도 및 AUC 입증이 핵심이며, 이를 위해 데이터셋 다양성, Gold standard 정의, 독립 검증 코호트 확보가 필수입니다."/>
-          <QA q="IVDR의 CPE와 임상 성능시험은 무엇이 다른가요?" a="문헌 기반 Clinical Evaluation과 Prospective Performance Study의 역할과 제출 문서를 구분해 설계합니다."/>
+          <QA q="IMFDS의 임상적 성능시험과 EU IVDR의 Clinical Performance Evaluation은 무엇이 다른가요?" a="EU IVDR에서는 문헌, 임상 경험, 임상적 성능시험 데이터를 모두 통합하여 Clinical Evidence로 정의하고, 이를 Clinical Performance Evaluation(CPE) 안에서 종합적으로 검토합니다. 반면 MFDS는 임상적 성능시험에 대해 별도의 사전 승인 절차는 없으나, IRB 승인 하에 수행된 계획서와 결과보고서를 허가 심사 시 함께 검토합니다. 따라서 국내 허가에서는 문헌·임상경험만으로는 충분하지 않으며, 실제 환자 기반의 임상적 성능시험 자료 제출이 핵심입니다."/>
         </div>
       </div>
     </PageLayout>
@@ -485,7 +501,7 @@ function FullScopePage(){
       </ul>
       <div className="flex gap-3">
         <NavLink to="/cases" className="px-5 py-3 border rounded-full font-semibold hover:bg-gray-50">관련 사례 보기</NavLink>
-        <NavLink to="/contact" className="px-5 py-3 bg-yellow-500 text-white rounded-full font-semibold hover:bg-yellow-600">상담 요청</NavLink>
+        <NavLink to="/contact" className="px-5 py-3 bg-yellow-500 text-white rounded-full font-semibold hover:bg-yellow-600">상담 신청하기</NavLink>
       </div>
     </ServiceLayout>
   );
@@ -495,21 +511,21 @@ function PartialPage(){
     <ServiceLayout title="Partial CRO (Flexible)">
       <p className="mb-6">
         <span className="font-semibold text-yellow-600">내부 리소스와 예산에 맞춰 필요한 구간만 선택적으로 지원</span>합니다. <br />
-        R&D 타당성 검토, Protocol/SAP 설계, CRA 모니터링(On-Demand), 
+        R&D 타당성 검토, Protocol/SAP 설계, CRA 모니터링, 
         <span className="font-semibold"> 통계·CSR, 허가 후 논문 출판용 임상시험</span>까지 
         단계별 맞춤 지원이 가능합니다. <br />
         <span className="font-semibold text-yellow-600">국내 허가</span>를 중심으로 진행하며, 
         해외 인증을 준비하는 업체에는 <span className="font-semibold">국제 규제 기준을 고려한 임상 설계·계획서 가이드</span>를 제공합니다.</p>
       <ul className="list-disc ml-6 space-y-1 mb-6">
         <li>Protocol/SAP 단독 수행</li>
-        <li>CRA 모니터링 On‑Demand</li>
+        <li>임상시험 관리 + 모니터링</li>
         <li>통계 분석 + CSR 패키지</li>
         <li> R&D 타당성 검토 및 연구개발 지원</li>
         <li>허가 후 논문 출판용 임상시험</li>
       </ul>
       <div className="flex gap-3">
         <NavLink to="/cases" className="px-5 py-3 border rounded-full font-semibold hover:bg-gray-50">관련 사례 보기</NavLink>
-        <NavLink to="/contact" className="px-5 py-3 bg-yellow-500 text-white rounded-full font-semibold hover:bg-yellow-600">상담 요청</NavLink>
+        <NavLink to="/contact" className="px-5 py-3 bg-yellow-500 text-white rounded-full font-semibold hover:bg-yellow-600">상담 신청하기</NavLink>
       </div>
     </ServiceLayout>
   );
@@ -527,7 +543,7 @@ function RegulatoryPage(){
       <p className="text-sm mb-4">* 해외 직접 제출은 수행하지 않습니다. 고객 주도 제출 시 설계·문서화 가이드와 전략 컨설팅을 제공합니다.</p>
       <div className="flex gap-3">
         <NavLink to="/cases" className="px-5 py-3 border rounded-full font-semibold hover:bg-gray-50">관련 사례 보기</NavLink>
-        <NavLink to="/contact" className="px-5 py-3 bg-yellow-500 text-white rounded-full font-semibold hover:bg-yellow-600">상담 요청</NavLink>
+        <NavLink to="/contact" className="px-5 py-3 bg-yellow-500 text-white rounded-full font-semibold hover:bg-yellow-600">상담 신청하기</NavLink>
       </div>
     </ServiceLayout>
   );
@@ -543,7 +559,7 @@ function ExpertisePage(){
       </ul>
       <div className="flex gap-3">
         <NavLink to="/cases" className="px-5 py-3 border rounded-full font-semibold hover:bg-gray-50">관련 사례 보기</NavLink>
-        <NavLink to="/contact" className="px-5 py-3 bg-yellow-500 text-white rounded-full font-semibold hover:bg-yellow-600">상담 요청</NavLink>
+        <NavLink to="/contact" className="px-5 py-3 bg-yellow-500 text-white rounded-full font-semibold hover:bg-yellow-600">상담 신청하기</NavLink>
       </div>
     </ServiceLayout>
   );
@@ -612,23 +628,16 @@ function CasesPage(){
 }
 
 // ---- Insights Overview ----
-function InsightsPage(){
+function InsightsPage() {
   // 재사용 카드
   const InsightCard = ({ to, title, desc }) => (
     <NavLink
       to={to}
-      className="group bg-white p-6 rounded-xl border shadow-sm hover:shadow transition block h-full"
+      className="group bg-white p-6 rounded-xl border shadow-sm hover:shadow-md transition block h-full"
     >
       <div className="h-full flex flex-col">
-        {/* 제목 */}
         <h3 className="text-lg font-bold mb-2">{title}</h3>
-
-        {/* 설명: 2줄까지만 표시하고 공간 채우기 */}
-        <p className="text-sm text-gray-600 clamp-2 flex-1">
-          {desc}
-        </p>
-
-        {/* CTA: 항상 아래/오른쪽 */}
+        <p className="text-sm text-gray-600 clamp-2 flex-1">{desc}</p>
         <div className="mt-4 flex justify-end">
           <span className="ck-brand text-sm font-semibold group-hover:underline">
             내용보기 →
@@ -639,8 +648,65 @@ function InsightsPage(){
   );
 
   return (
-    <PageLayout title="Insights" breadcrumb={<NavLink to="/" className="hover:underline">Home</NavLink>}>
-      <p className="mb-8">규제·임상·통계에 대한 C&KInsight의 관점을 공유합니다. 카드를 눌러 전문을 확인하세요.</p>
+    <PageLayout
+      title="Insights"
+      breadcrumb={<NavLink to="/" className="hover:underline">Home</NavLink>}
+    >
+      {/* ---- Hero ---- */}
+      <section className="mb-8">
+        <div className="rounded-2xl border border-gray-200 bg-white/90 shadow-sm p-6 md:p-8">
+          {/* 1) 상단 카테고리 + 제목(별도 행) */}
+          <p className="text-sm font-semibold text-[#D08700]">
+            C&KInsight · Philosophy
+          </p>
+          <h2 className="mt-3 text-3xl md:text-4xl font-bold leading-tight whitespace-normal md:whitespace-nowrap">
+            From <span className="text-[#D08700]">Disconnection</span> to{" "}
+            <span className="text-[#D08700]">Direction</span>
+          </h2>
+
+          {/* 2) (왼쪽) 문단+불릿  ↔  (오른쪽) 인포그래픽  */}
+          <div className="mt-6 flex flex-col md:flex-row items-start gap-6 md:gap-10">
+            {/* 왼쪽: 문단 + 불릿 묶음 */}
+            <div className="md:flex-1">
+              <p className="text-[16px] leading-relaxed text-gray-700 mb-7">
+                복잡한 규제·임상·통계 과정에서 단계가 분절되면 결과는 목적에서 멀어집니다.{" "}
+                C&KInsight는 전체를 조망하는 <strong>Insight</strong>로 각 단계를 정렬하고,{" "}
+                <strong>목적 정합적 결과</strong>로 연결합니다.
+              </p>
+
+              <ul className="space-y-1.5 text-[15px] text-gray-700">
+                <li className="flex items-start gap-2">
+                  <span className="mt-[6px] h-2 w-2 rounded-full bg-[#D08700]" />
+                  Endpoint–Design–Power–Validation의 정렬
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-[6px] h-2 w-2 rounded-full bg-[#D08700]" />
+                  심사자가 의도를 즉시 파악할 수 있는 설계/문서화
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-[6px] h-2 w-2 rounded-full bg-[#D08700]" />
+                  Purpose-Aligned Outcome 달성
+                </li>
+              </ul>
+            </div>
+
+            {/* 오른쪽: 인포그래픽(테두리X, 상단 정렬) */}
+            <figure className="md:flex-none rounded-xl bg-[#FFFBF5] overflow-hidden">
+              <img
+                src="/insights-hero-v3.png"
+                alt="Insight Guides the Way: Unclear→Aligned (Insight→Design→Power→Outcome)"
+                className="block object-contain object-top w-full h-auto max-w-[420px] max-h-[260px] select-none"
+                loading="lazy"
+              />
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      {/* ---- 카드 그리드 ---- */}
+      <p className="mb-4 text-gray-700">
+        규제·임상·통계에 대한 C&KInsight의 관점을 카드로 정리했습니다. 아래 카드를 눌러 전문을 확인하세요.
+      </p>
 
       <div className="grid md:grid-cols-4 gap-6 items-stretch">
         <InsightCard
@@ -667,8 +733,6 @@ function InsightsPage(){
     </PageLayout>
   );
 }
-
-
 
 
 // ---- Case Details ----
@@ -1163,7 +1227,7 @@ function ContactPage() {
           disabled={status === 'loading'}
           className="px-8 py-4 bg-yellow-500 text-white font-bold rounded-full shadow hover:bg-yellow-600 transition disabled:opacity-60"
         >
-          {status === 'loading' ? '전송 중…' : '전략 미팅 예약하기'}
+          {status === 'loading' ? '전송 중…' : '상담 신청하기'}
         </button>
 
         {status === 'success' && (
@@ -1230,8 +1294,8 @@ export default function App(){
         <Footer/>        
         {/* 우하단 액션들 한 줄로 정렬 & 간격 제어 */}
         <FixedActions>
-          <BackOnScroll threshold={80}/>  {/* ← */}
-          <BackToTop threshold={200}/>     {/* ↑ */}
+          <BackOnScroll threshold={0}/>  {/* ← */}
+          <BackToTop threshold={40}/>     {/* ↑ */}
         </FixedActions>
       </Router>
     </div>
