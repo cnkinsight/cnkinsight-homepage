@@ -113,7 +113,7 @@ function Home(){
         <h3 className="text-2xl font-bold mb-2">Partial CRO</h3>
         <ul className="list-disc ml-5 text-sm leading-relaxed space-y-1">
           <li>내부 리소스·예산 상황에 맞춘 맞춤형 모듈 서비스</li>
-          <li>(Protocol/SAP, CRA, 통계·CSR 등)</li>
+          <li>(Protocol/SAP, 모니터링, 통계·CSR 등)</li>
         </ul>
         <span className="mt-4 inline-block ck-brand font-semibold group-hover:underline">자세히 보기 →</span>
       </NavLink>
@@ -337,7 +337,7 @@ function AboutPage(){
               </LegendItem>
 
               <LegendItem title="임상 운영·분석:">
-                Protocol/SAP, Monitoring, EDC/DM 등 <span className="font-medium">실행 가능한 설계와 분석 지원</span>을 제공합니다.
+                Protocol/SAP, 모니터링, EDC/DM 등 <span className="font-medium">실행 가능한 설계와 분석 지원</span>을 제공합니다.
               </LegendItem>
 
               <LegendItem title="규제 허가:">
@@ -495,7 +495,7 @@ function FullScopePage(){
         글로벌 규제 요구를 반영한 연구 설계 및 문서화 가이드</span>도 제공합니다.</p>
       <ul className="list-disc ml-6 space-y-1 mb-6">
         <li>임상 전략 수립 / Protocol · SAP 설계</li>
-        <li>사이트 셋업 · CRA 모니터링 · 품질관리</li>
+        <li>사이트 셋업 · 모니터링 · 품질관리</li>
         <li>EDC 구축 · 데이터 무결성 · 데이터 관리</li>
         <li>통계 분석 · CSR 작성 · eCTD 제출 패키지</li>
       </ul>
@@ -511,7 +511,7 @@ function PartialPage(){
     <ServiceLayout title="Partial CRO (Flexible)">
       <p className="mb-6">
         <span className="font-semibold text-yellow-600">내부 리소스와 예산에 맞춰 필요한 구간만 선택적으로 지원</span>합니다. <br />
-        R&D 타당성 검토, Protocol/SAP 설계, CRA 모니터링, 
+        R&D 타당성 검토, Protocol/SAP 설계, 모니터링, 
         <span className="font-semibold"> 통계·CSR, 허가 후 논문 출판용 임상시험</span>까지 
         단계별 맞춤 지원이 가능합니다. <br />
         <span className="font-semibold text-yellow-600">국내 허가</span>를 중심으로 진행하며, 
