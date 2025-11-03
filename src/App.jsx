@@ -1119,16 +1119,7 @@ function InsightSampleSize() {
       title="Sample Size Determination Journey"
     >
       {/* 설명 */}
-      <p className="
-        mb-6 italic text-gray-700
-        text-[15px] sm:text-[16px]
-        tracking-tight text-center
-        px-4                       /* 모바일 좌우 여백 */
-        whitespace-normal          /* 줄바꿈 허용 */
-        break-keep                 /* 한글 단어 중간 강제분리 방지 */
-        [overflow-wrap:anywhere]   /* 아주 긴 토큰도 적당히 줄바꿈 */
-        sm:whitespace-nowrap       /* 데스크톱부터는 한 줄 유지 (선택) */
-      ">
+      <p className="mb-6 italic text-gray-700 text-center">
         "Clinical success criteria, statistical rigor, and representative populations converge
         to define the right ‘n’ for your study."
       </p>
@@ -1152,16 +1143,7 @@ function InsightAI(){
       breadcrumb={<NavLink to="/insights" className="hover:underline">Insights</NavLink>}
       title="AI-SaMD: From Purpose to Endpoints"
     >
-      <p className="
-        mb-6 italic text-gray-700
-        text-[15px] sm:text-[16px]
-        tracking-tight text-center
-        px-4                       /* 모바일 좌우 여백 */
-        whitespace-normal          /* 줄바꿈 허용 */
-        break-keep                 /* 한글 단어 중간 강제분리 방지 */
-        [overflow-wrap:anywhere]   /* 아주 긴 토큰도 적당히 줄바꿈 */
-        sm:whitespace-nowrap       /* 데스크톱부터는 한 줄 유지 (선택) */
-      ">
+      <p className="mb-6 italic text-gray-700 text-center">
         "AI-based devices require endpoints aligned with clinical purpose, bridging algorithm performance with regulatory approval."
       </p>
 
@@ -1185,16 +1167,7 @@ function InsightDTx(){
       breadcrumb={<NavLink to="/insights" className="hover:underline">Insights</NavLink>}
       title="DTx in the Clinical Ecosystem"
     >
-      <p className="
-        mb-6 italic text-gray-700
-        text-[15px] sm:text-[16px]
-        tracking-tight text-center
-        px-4                       /* 모바일 좌우 여백 */
-        whitespace-normal          /* 줄바꿈 허용 */
-        break-keep                 /* 한글 단어 중간 강제분리 방지 */
-        [overflow-wrap:anywhere]   /* 아주 긴 토큰도 적당히 줄바꿈 */
-        sm:whitespace-nowrap       /* 데스크톱부터는 한 줄 유지 (선택) */
-      ">
+      <p className="mb-6 italic text-gray-700 text-center">
         “Digital therapeutics extend care beyond hospitals, enabling CBT training, adherence monitoring, and lifestyle modification.”
       </p>
 
@@ -1217,16 +1190,7 @@ function InsightIVD(){
       breadcrumb={<NavLink to="/insights" className="hover:underline">Insights</NavLink>}
       title="DTx in the Clinical Ecosystem"
     >
-      <p className="
-        mb-6 italic text-gray-700
-        text-[15px] sm:text-[16px]
-        tracking-tight text-center
-        px-4                       /* 모바일 좌우 여백 */
-        whitespace-normal          /* 줄바꿈 허용 */
-        break-keep                 /* 한글 단어 중간 강제분리 방지 */
-        [overflow-wrap:anywhere]   /* 아주 긴 토큰도 적당히 줄바꿈 */
-        sm:whitespace-nowrap       /* 데스크톱부터는 한 줄 유지 (선택) */
-      ">
+      <p className="mb-6 italic text-gray-700 text-center">
         “Novel biomarkers demand longitudinal validation—tracking changes over time to confirm predictive and clinical value.”
       </p>
 
