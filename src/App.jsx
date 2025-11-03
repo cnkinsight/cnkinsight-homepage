@@ -293,7 +293,7 @@ function AboutPage(){
           <div className="flex flex-col md:flex-row items-center gap-5">
             {/* Venn Diagram */}
             <div className="relative w-[420px] h-[220px]">
-              <svg viewBox="0 0 320 220" className="w-full h-full">
+              <svg viewBox="0 -0 320 220" className="w-full h-full overflow-visible">
                 <defs>
                   <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
                     <stop offset="0%" stopOpacity="0.12" stopColor="rgb(208,135,0)"/>
