@@ -378,7 +378,7 @@ function ServicesPage(){
         <NavLink to="/services/full-scope" className="group block bg-gray-50 hover:bg-white p-6 rounded-2xl border shadow-sm hover:shadow transition">
           <h3 className="text-2xl font-bold mb-2">Full-Scope CRO</h3>
           <p className="text-sm mb-3">
-            프로토콜 → 모니터링 → 데이터(EDC/DM) → 통계·CSR까지 <br />
+            프로토콜 → 모니터링 → 데이터 관리(EDC/DM) → 통계·CSR까지 <br />
             임상시험 전 과정을 일관성 있게 수행합니다.
           </p>
           <span className="ck-brand font-semibold group-hover:underline">자세히 보기 →</span>
@@ -488,7 +488,7 @@ function FullScopePage(){
     <ServiceLayout title="Full‑Scope CRO">
       <p className="mb-6">
         <span className="font-semibold text-yellow-600">
-        프로토콜 설계부터 모니터링, 데이터 관리(EDC), 통계 분석, CSR 작성</span>까지 임상시험 전 과정을 일관성 있게 수행합니다. <br /> 
+        프로토콜 설계부터 모니터링, 데이터 관리(EDC/DM), 통계 분석, CSR 작성</span>까지 임상시험 전 과정을 일관성 있게 수행합니다. <br /> 
         <span className="font-semibold text-yellow-600">
         국내 허가(MFDS)</span>를 중심으로 지원하며, FDA·CE 인증을 준비하는 업체에는
         <span className="font-semibold text-yellow-600">
@@ -496,7 +496,7 @@ function FullScopePage(){
       <ul className="list-disc ml-6 space-y-1 mb-6">
         <li>임상 전략 수립 / Protocol · SAP 설계</li>
         <li>사이트 셋업 · 모니터링 · 품질관리</li>
-        <li>EDC 구축 · 데이터 무결성 · 데이터 관리</li>
+        <li>EDC 구축 · 데이터 무결성 · 데이터 관리(EDC/DM)</li>
         <li>통계 분석 · CSR 작성 · eCTD 제출 패키지</li>
       </ul>
       <div className="flex gap-3">
