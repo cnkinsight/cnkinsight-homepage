@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { HashRouter as Router, Routes, Route, NavLink, useNavigate, Navigate } from "react-router-dom";
 
+import QA from "./QA";        // ✅ 경로 수정: ./components/QA 가 아니라 ./QA
+
 // Brand color utility (로고와 동일 톤)
 const GlobalStyle = () => (
   <style>{`
@@ -54,19 +56,7 @@ function PageLayout({breadcrumb, title, children}){
   );
 }
 
-// ---- Helper: FAQ item (전역 정의) ----
-function QA({q, a}){
-  const [open, setOpen] = useState(false);
-  return (
-    <div className="border rounded-xl p-4 bg-white shadow-sm">
-      <button onClick={()=>setOpen(!open)} className="w-full text-left flex items-center justify-between">
-        <span className="font-semibold">{q}</span>
-        <span className="ck-brand text-xl ml-2">{open?'-':'+'}</span>
-      </button>
-      {open && <p className="mt-3 text-sm leading-relaxed">{a}</p>}
-    </div>
-  );
-}
+
 
 // ---- Home (overview + preview) ----
 function Home(){
@@ -464,11 +454,51 @@ function ServicesPage(){
       <div>
         <h3 className="text-xl font-bold mb-3">자주 받는 질문(FAQ)</h3>
         <div className="grid md:grid-cols-2 gap-4">
-          <QA q="Partial로 시작했다가 Full‑Scope로 전환할 수 있나요?" a="가능합니다. 계약 범위를 재정의하고 남은 범위를 통합 일정으로 맞춥니다. 이미 산출된 문서는 동일 품질체계로 리베이스합니다."/>
-          <QA q="EDC/DM만 별도로 맡길 수 있나요?" a="예. CDASH/SDTM 매핑 고려한 CRF, 데이터 품질지표 설정과 함께 단독 모듈로 수행합니다."/>
-          <QA q="AI-SaMD의 임상 설계는 기능별로 어떻게 달라지나요?" a="AI-SaMD는 예측·진단·치료보조 등 기능 틀은 유사하지만, 실제 설계는 적응증의 특성에 따라 달라집니다.
-예를 들어 폐렴 진단 AI는 기존 판독 대비 민감도·특이도 및 AUC 입증이 핵심이며, 이를 위해 데이터셋 다양성, Gold standard 정의, 독립 검증 코호트 확보가 필수입니다."/>
-          <QA q="IMFDS의 임상적 성능시험과 EU IVDR의 Clinical Performance Evaluation은 무엇이 다른가요?" a="EU IVDR에서는 문헌, 임상 경험, 임상적 성능시험 데이터를 모두 통합하여 Clinical Evidence로 정의하고, 이를 Clinical Performance Evaluation(CPE) 안에서 종합적으로 검토합니다. 반면 MFDS는 임상적 성능시험에 대해 별도의 사전 승인 절차는 없으나, IRB 승인 하에 수행된 계획서와 결과보고서를 허가 심사 시 함께 검토합니다. 따라서 국내 허가에서는 문헌·임상경험만으로는 충분하지 않으며, 실제 환자 기반의 임상적 성능시험 자료 제출이 핵심입니다."/>
+          <QA q="Partial로 시작했다가 Full‑Scope로 전환할 수 있나요?" 
+               a="네, 가능합니다.<br/>
+                  진행 중인 Partial 범위를 검토한 뒤, 일정과 인력 구성을<br/>
+                  Full-Scope 체계로 확장하여 관리합니다.<br/>
+                  이미 수행된 단계의 결과물은 동일한 품질 기준에 따라 통합 관리되며, 
+                  이후 과정은 하나의 프로젝트로 일관되게 운영됩니다."/>
+          <QA q="EDC/DM만 별도로 맡길 수 있나요?" 
+              a="네, 가능합니다.<br/>
+                 EDC 구축 및 데이터 관리는 단독 과업으로도 수행할 수 있습니다.<br/>
+                 CRScube 등 검증된 임상 데이터관리(EDC/DM) 시스템을 활용하여<br/>
+                 데이터 구조 설계, 질 관리(QC), Lock까지 전 과정을 지원합니다.<br/>
+                 타 기관 또는 자체 수행 중인 임상시험이라도, 기존 프로토콜과 연동 <br/>
+                 가능한 형태로 맞춤 구축이 가능합니다."/>
+          <QA q="AI-SaMD의 임상 설계는 기능별로 어떻게 달라지나요?" 
+              a="AI-SaMD는 예측·진단·치료보조 등 기능 틀은 유사하지만,<br/>
+               실제 설계는 적응증의 특성에 따라 달라집니다.<br/> 
+               예를 들어 폐렴 진단 AI는 기존 판독 대비 민감도·특이도 및 AUC 입증이 핵심이며, 
+                이를 위해 데이터셋 다양성, Gold standard 정의, 독립 검증 코호트 확보가 필수입니다."/>
+          <QA q="IMFDS의 임상적 성능시험과 EU IVDR의 Clinical Performance Evaluation은 무엇이 다른가요?" 
+              a="EU IVDR에서는 문헌, 임상 경험, 임상적 성능시험 데이터를<br/>
+                 모두 통합하여 Clinical Evidence로 정의하고,<br/> 
+                 이를 Clinical Performance Evaluation(CPE) 안에서 종합적으로<br/>
+                 검토합니다. 반면 MFDS는 임상적 성능시험에 대해 별도의 사전 승인 절차는 없으나, 
+                 IRB 승인 하에 수행된 계획서와 결과보고서를<br/>
+                 허가 심사 시 함께 검토합니다.<br/> 
+                 따라서 국내 허가에서는 문헌·임상경험만으로는 충분하지 않으며,<br/> 
+                 실제 환자 기반의 임상적 성능시험 자료 제출이 핵심입니다."/>
+          <QA q="홈페이지를 통해 상담 요청한 이후 절차를 어떻게 진행되나요?" 
+              a="홈페이지를 통해 상담 요청이 접수되면,
+                 먼저 제출하신 내용을 검토한 뒤 담당 컨설턴트가 이메일로 세부 사항을 확인드립니다.<br/>
+                 필요 시 추가 자료나 질의를 주고받은 후, 미팅 일정(온라인 또는 대면)을 조율하여 구체적인 논의로 이어집니다.
+                 이후 협의된 범위를 기반으로 프로젝트 제안서와 견적서를 단계별로 안내해드립니다."/>  
+          <QA q="정부과제와 연계 가능한가요?" 
+              a="네, 가능합니다.<br/>
+                 TIPS, 범부처 과제, 보건의료 R&D 등 정부과제 기반 연구와 연계해<br/> 수행할 수 있습니다.<br/>
+                 연구비 구조와 과제 일정에 맞춰 단계별 견적, 산출근거,<br/>
+                 과업 분리 계약을 지원하며, 필요 시 예산서, 과제 산출물 등 <br/>
+                 과제 제출 서류 형태로 맞추어 제공해드립니다."/>
+          <QA q="Insight라는 개념은 무엇을 의미하나요?"
+              a="C&K Insight가 말하는 Insight는 단순한 실행이 아니라, 
+                 제품 특성과 목표에 맞는 임상·허가 전략을 정확히 짚어내는 관점을 의미합니다.<br/> 
+                 무엇을, 왜, 어떤 방식으로 진행해야 가장 효율적인지를 함께 고민하며, 임상 설계부터 데이터 관리, 허가 대응까지 
+                 현실적인 방향을 제시하는<br/>
+                 경험과 판단력이 우리의 Insight입니다."/>
+                                
         </div>
       </div>
     </PageLayout>
