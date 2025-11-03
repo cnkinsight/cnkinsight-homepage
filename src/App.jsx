@@ -26,7 +26,7 @@ function Header(){
       <div className="flex items-center space-x-4">
         <NavLink to="/" className="flex items-center"><img src="/1-2.png" alt="C&KInsight Logo" className="h-12" /></NavLink>
       </div>
-      <nav className="space-x-6 text-lg font-medium">
+      <nav className="space-x-6 text-lg font-semibold">
         <NavLink to="/about" className={nav}>About</NavLink>
         <NavLink to="/services" className={nav}>Services</NavLink>
         <NavLink to="/cases" className={nav}>Case Studies</NavLink>
@@ -66,7 +66,7 @@ function Home(){
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-yellow-400 to-yellow-600 text-white text-center py-28 px-6">
         <h1 className="text-6xl font-extrabold tracking-tight mb-6">From Concept to Clearance,<br />We Deliver Insight</h1>
-        <p className="text-2xl font-medium mb-8 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-2xl font-semibold mb-8 max-w-2xl mx-auto leading-relaxed">
           C&KInsight는 의료기기 개발의 시작부터 허가까지, <br />Insight로 전략을 제시하는 파트너입니다.
         </p>
         <div className="space-x-4">
@@ -290,7 +290,7 @@ function AboutPage(){
         {/* 비전 벤다이어그램 (SVG) */}
         <section>
           <h3 className="text-xl font-bold mb-9">비전: Insight로 전주기를 설계합니다</h3>
-          <div className="flex flex-col md:flex-row items-center gap-6">
+          <div className="flex flex-col md:flex-row items-center gap-5">
             {/* Venn Diagram */}
             <div className="relative w-[420px] h-[220px]">
               <svg viewBox="0 0 320 220" className="w-full h-full">
@@ -322,17 +322,22 @@ function AboutPage(){
             {/* Legend */}
             <ul className="space-y-5">
               <LegendItem title="R&D 가능성 검토:">
+                <span className="inline-block whitespace-nowrap">
                 적응증 정의, 임상적 타당성, 예비 통계 검토를 통해
-                <span className="font-medium"> 개발 방향의 근거</span>를 마련합니다.
+                <span className="font-semibold "> 개발 방향의 근거</span>를 마련합니다.
+                </span>
               </LegendItem>
 
               <LegendItem title="임상 운영·분석:">
-                Protocol/SAP, 모니터링, EDC/DM 등 <span className="font-medium">실행 가능한 설계와 분석 지원</span>을 제공합니다.
+                <span className="inline-block whitespace-nowrap">
+                Protocol/SAP, 모니터링, EDC/DM 등 <span className="font-semibold">실행 가능한 설계와 분석 지원</span>을 제공합니다.
+                </span>
               </LegendItem>
 
               <LegendItem title="규제 허가:">
-                <span className="font-medium">국내 허가(MFDS)</span>를 중심으로 지원하며,
-                FDA·CE 인증을 준비하는 업체에는 <span className="font-medium">연구 설계 및 문서화 가이드</span>를 제공합니다.
+                <span className="inline-block whitespace-nowrap">
+                <span className="font-semibold">국내 허가(MFDS)</span>를 중심으로 지원하며,
+                FDA·CE 인증을 준비하는 업체에는</span> <br/><span className="font-semibold">연구 설계 및 문서화 가이드</span>를 제공합니다.
               </LegendItem>
             </ul>
 
@@ -347,7 +352,13 @@ function AboutPage(){
           </div>
           <div className="p-6 rounded-xl border">
             <h4 className="font-semibold mb-2">Flexible Engagement</h4>
-            <p className="text-sm">Full‑Scope 또는 Partial 모듈(Protocol/SAP, 모니터링, 통계·CSR 등)로 상황에 맞춰 계약 가능합니다.</p>
+            <p className="text-[13.5px] md:text-sm leading-6 tracking-tight break-keep">
+              <span className="inline-block whitespace-nowrap">
+                Full-Scope 또는 Partial 모듈(Protocol/SAP, 모니터링, 통계·CSR 등)로
+              </span>
+              <br />
+              상황에 맞춰 계약 가능합니다.
+            </p>
           </div>
         </section>
       </div>
@@ -359,8 +370,8 @@ function AboutPage(){
 function ServicesPage(){
   return (
     <PageLayout title="Our Services" breadcrumb={<NavLink to="/" className="hover:underline">Home</NavLink>}>
-      <p className="mb-8">필요한 범위만 선택하는 <strong>Partial</strong>부터, 전 과정을 맡기는 <strong>Full-Scope</strong>까지— 
-        C&KInsight는 임상·허가 전주기를 Insight로 설계합니다. 아래 항목에서 세부 내용을 확인하세요.</p>
+      <p className="mb-8">필요한 범위만 선택하는 <strong>Partial</strong>부터, 전 과정을 맡기는 <strong>Full-Scope</strong>까지
+        C&KInsight는 임상·허가 전주기를 Insight로 설계합니다.<br/> 아래 항목에서 세부 내용을 확인하세요.</p>
 
       {/* 카드 목록 */}
       <div className="grid md:grid-cols-2 gap-8 mb-10">
@@ -378,8 +389,8 @@ function ServicesPage(){
         <NavLink to="/services/partial" className="group block bg-gray-50 hover:bg-white p-6 rounded-2xl border shadow-sm hover:shadow transition">
           <h3 className="text-2xl font-bold mb-2">Partial CRO (Flexible)</h3>
           <p className="text-sm mb-3">
-            필요한 구간만 선택: Protocol/SAP, 모니터링, <br />
-            통계·CSR, 출판용 임상시험 등 모듈형 지원
+            필요한 구간만 선택: Protocol/SAP, 모니터링, 
+            통계·CSR, <br />출판용 임상시험 등 모듈형 지원
           </p>
           <span className="ck-brand font-semibold group-hover:underline">자세히 보기 →</span>
         </NavLink>
@@ -493,7 +504,7 @@ function ServicesPage(){
                  과업 분리 계약을 지원하며, 필요 시 예산서, 과제 산출물 등 <br/>
                  과제 제출 서류 형태로 맞추어 제공해드립니다."/>
           <QA q="Insight라는 개념은 무엇을 의미하나요?"
-              a="C&K Insight가 말하는 Insight는 단순한 실행이 아니라, 
+              a="C&KInsight가 말하는 Insight는 단순한 실행이 아니라, 
                  제품 특성과 목표에 맞는 임상·허가 전략을 정확히 짚어내는 관점을 의미합니다.<br/> 
                  무엇을, 왜, 어떤 방식으로 진행해야 가장 효율적인지를 함께 고민하며, 임상 설계부터 데이터 관리, 허가 대응까지 
                  현실적인 방향을 제시하는<br/>
@@ -522,7 +533,7 @@ function FullScopePage(){
         <span className="font-semibold text-yellow-600">
         국내 허가(MFDS)</span>를 중심으로 지원하며, FDA·CE 인증을 준비하는 업체에는
         <span className="font-semibold text-yellow-600">
-        글로벌 규제 요구를 반영한 연구 설계 및 문서화 가이드</span>도 제공합니다.</p>
+        글로벌 규제 요구를 반영한 연구 설계 및 문서화 가이드</span>도 <br/>제공합니다.</p>
       <ul className="list-disc ml-6 space-y-1 mb-6">
         <li>임상 전략 수립 / Protocol · SAP 설계</li>
         <li>사이트 셋업 · 모니터링 · 품질관리</li>
@@ -606,7 +617,7 @@ function CasesPage(){
         className="group bg-white p-6 rounded-xl border shadow-sm hover:shadow transition flex flex-col h-full">
         <div className="flex-grow">
           <h3 className="text-xl font-bold mb-2">Digital Therapeutics (DTx)</h3>
-          <p className="text-sm mb-4">항암, 천식, 알레르기 비염 등 | MFDS 임상 승인</p>
+          <p className="text-sm mb-4">항암, 천식, 알레르기 비염 등<br/> | MFDS 임상 승인</p>
         </div>
         <span className="ck-brand font-semibold group-hover:underline mt-auto">사례 보기 →</span>
       </NavLink>
@@ -616,7 +627,7 @@ function CasesPage(){
         className="group bg-white p-6 rounded-xl border shadow-sm hover:shadow transition flex flex-col h-full">
         <div className="flex-grow">
           <h3 className="text-xl font-bold mb-2">AI-SaMD / Diagnostic AI</h3>
-          <p className="text-sm mb-4">호흡기, 희귀, 감상선암 등 | MFDS 허가, FDA 승인</p>
+          <p className="text-sm mb-4">호흡기, 희귀, 감상선암 등<br/>  | MFDS 허가, FDA 승인</p>
         </div>
         <span className="ck-brand font-semibold group-hover:underline mt-auto">사례 보기 →</span>
       </NavLink>
@@ -626,7 +637,7 @@ function CasesPage(){
         className="group bg-white p-6 rounded-xl border shadow-sm hover:shadow transition flex flex-col h-full">
         <div className="flex-grow">
           <h3 className="text-xl font-bold mb-2">IVD (Qualitative)</h3>
-          <p className="text-sm mb-4">STD, RV, Sepsis 등 | MFDS 허가</p>
+          <p className="text-sm mb-4">STD, RV, Sepsis 등<br/>  | MFDS 허가</p>
         </div>
         <span className="ck-brand font-semibold group-hover:underline mt-auto">사례 보기 →</span>
       </NavLink>
@@ -636,7 +647,7 @@ function CasesPage(){
         className="group bg-white p-6 rounded-xl border shadow-sm hover:shadow transition flex flex-col h-full">
         <div className="flex-grow">
           <h3 className="text-xl font-bold mb-2">IVD (Quantitative)</h3>
-          <p className="text-sm mb-4">CMV, CK-MB, NT-proBNP 등 | MFDS 허가</p>
+          <p className="text-sm mb-4">CMV, CK-MB, NT-proBNP 등<br/>  | MFDS 허가</p>
         </div>
         <span className="ck-brand font-semibold group-hover:underline mt-auto">사례 보기 →</span>
       </NavLink>
@@ -646,7 +657,7 @@ function CasesPage(){
         className="group bg-white p-6 rounded-xl border shadow-sm hover:shadow transition flex flex-col h-full">
         <div className="flex-grow">
           <h3 className="text-xl font-bold mb-2">Medical Supplies / Accessories</h3>
-          <p className="text-sm mb-4">혈압 관리 | MFDS 임상 승인</p>
+          <p className="text-sm mb-4">혈압 관리 등<br/>  | MFDS 임상 승인</p>
         </div>
         <span className="ck-brand font-semibold group-hover:underline mt-auto">사례 보기 →</span>
       </NavLink>
@@ -694,14 +705,20 @@ function InsightsPage() {
             <span className="text-[#D08700]">Direction</span>
           </h2>
 
-          {/* 2) (왼쪽) 문단+불릿  ↔  (오른쪽) 인포그래픽  */}
+          {/* 2) (왼쪽) 문단+불릿  ↔  (오른쪽) 인포그래픽 */}
           <div className="mt-6 flex flex-col md:flex-row items-start gap-6 md:gap-10">
             {/* 왼쪽: 문단 + 불릿 묶음 */}
-            <div className="md:flex-1">
+            <div className="md:flex-1 min-w-0">   {/* ← 좌측 영역은 남는 폭 다 쓰고, 넘침 방지 */}
               <p className="text-[16px] leading-relaxed text-gray-700 mb-7">
-                복잡한 규제·임상·통계 과정에서 단계가 분절되면 결과는 목적에서 멀어집니다.{" "}
-                C&KInsight는 전체를 조망하는 <strong>Insight</strong>로 각 단계를 정렬하고,{" "}
-                <strong>목적 정합적 결과</strong>로 연결합니다.
+                복잡한 규제·임상·통계 과정에서 단계가 분절되면 <br/>결과는 목적에서 멀어집니다.<br/>
+                <span className="inline-block">
+                  {/* ← nowrap 제거로 과도한 가로폭 방지 */}
+                  C&KInsight는 전체를 조망하는 <strong>Insight</strong>로 각 단계를 정렬하고,
+                </span>
+                <br/>
+                <span className="inline-block">
+                  <strong>목적 정합적 결과</strong>로 연결합니다.
+                </span>
               </p>
 
               <ul className="space-y-1.5 text-[15px] text-gray-700">
@@ -720,22 +737,25 @@ function InsightsPage() {
               </ul>
             </div>
 
-            {/* 오른쪽: 인포그래픽(테두리X, 상단 정렬) */}
-            <figure className="md:flex-none rounded-xl bg-[#FFFBF5] overflow-hidden">
+            {/* 오른쪽: 인포그래픽 */}
+            <figure className="md:shrink-0 md:basis-[380px] rounded-xl bg-[#FFFBF5] overflow-hidden">
+              {/* ↑ md에서 고정폭(basis) + shrink-0 로 줄바꿈/밀림 방지.
+                  폭 더 줄이고 싶으면 360~400px 사이로 조정 */}
               <img
                 src="/insights-hero-v3.png"
                 alt="Insight Guides the Way: Unclear→Aligned (Insight→Design→Power→Outcome)"
-                className="block object-contain object-top w-full h-auto max-w-[420px] max-h-[260px] select-none"
+                className="block w-full h-auto object-contain object-top select-none"
                 loading="lazy"
               />
             </figure>
           </div>
+
         </div>
       </section>
 
       {/* ---- 카드 그리드 ---- */}
       <p className="mb-4 text-gray-700">
-        규제·임상·통계에 대한 C&KInsight의 관점을 카드로 정리했습니다. 아래 카드를 눌러 전문을 확인하세요.
+        규제·임상·통계에 대한 C&KInsight의 관점을 카드로 정리했습니다. 아래 카드를 눌러 확인하세요.
       </p>
 
       <div className="grid md:grid-cols-4 gap-6 items-stretch">
@@ -1099,9 +1119,9 @@ function InsightSampleSize() {
       title="Sample Size Determination Journey"
     >
       {/* 설명 */}
-      <p className="mb-6 italic text-gray-700">
+      <p className="mb-6 italic text-gray-700 text-center">
         "Clinical success criteria, statistical rigor, and representative populations converge
-        to define the right ‘n’ for your study.""
+        to define the right ‘n’ for your study."
       </p>
 
       {/* 이미지 (크기 제한 + 중앙 정렬) */}
@@ -1123,9 +1143,10 @@ function InsightAI(){
       breadcrumb={<NavLink to="/insights" className="hover:underline">Insights</NavLink>}
       title="AI-SaMD: From Purpose to Endpoints"
     >
-      <p className="mb-6 italic text-gray-700">
+      <p className="mb-6 italic text-gray-700 text-[16px] tracking-tight whitespace-nowrap text-center">
         "AI-based devices require endpoints aligned with clinical purpose, bridging algorithm performance with regulatory approval."
       </p>
+
 
       <div className="flex justify-center">
         <img
@@ -1146,7 +1167,7 @@ function InsightDTx(){
       breadcrumb={<NavLink to="/insights" className="hover:underline">Insights</NavLink>}
       title="DTx in the Clinical Ecosystem"
     >
-      <p className="mb-6 italic text-gray-700">
+      <p className="mb-6 italic text-gray-700 text-[16px] tracking-tight whitespace-nowrap text-center">
         “Digital therapeutics extend care beyond hospitals, enabling CBT training, adherence monitoring, and lifestyle modification.”
       </p>
 
@@ -1169,7 +1190,7 @@ function InsightIVD(){
       breadcrumb={<NavLink to="/insights" className="hover:underline">Insights</NavLink>}
       title="DTx in the Clinical Ecosystem"
     >
-      <p className="mb-6 italic text-gray-700">
+      <p className="mb-6 italic text-gray-700 text-center">
         “Novel biomarkers demand longitudinal validation—tracking changes over time to confirm predictive and clinical value.”
       </p>
 
@@ -1261,10 +1282,10 @@ function ContactPage() {
         </button>
 
         {status === 'success' && (
-          <p className="text-green-600 font-medium">제출되었습니다! 담당자가 곧 연락드리겠습니다.</p>
+          <p className="text-green-600 font-semibold">제출되었습니다! 담당자가 곧 연락드리겠습니다.</p>
         )}
         {status === 'error' && (
-          <p className="text-red-600 font-medium">{errorMsg}</p>
+          <p className="text-red-600 font-semibold">{errorMsg}</p>
         )}
       </form>
 
