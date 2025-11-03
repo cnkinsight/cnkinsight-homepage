@@ -352,13 +352,13 @@ function AboutPage(){
           </div>
           <div className="p-6 rounded-xl border">
             <h4 className="font-semibold mb-2">Flexible Engagement</h4>
-            <p className="text-[13.5px] md:text-sm leading-6 tracking-tight break-keep">
-              <span className="inline-block whitespace-nowrap">
+           <p className="text-[13.5px] md:text-sm leading-6 tracking-tight break-keep">
+              <span className="inline-block md:whitespace-nowrap">
                 Full-Scope 또는 Partial 모듈(Protocol/SAP, 모니터링, 통계·CSR 등)로
               </span>
-              <br />
               상황에 맞춰 계약 가능합니다.
             </p>
+
           </div>
         </section>
       </div>
@@ -375,11 +375,12 @@ function ServicesPage(){
 
       {/* 카드 목록 */}
       <div className="grid md:grid-cols-2 gap-8 mb-10">
-         {/* Full-Scope CRO */}
+        {/* Full-Scope CRO */}
         <NavLink to="/services/full-scope" className="group block bg-gray-50 hover:bg-white p-6 rounded-2xl border shadow-sm hover:shadow transition">
           <h3 className="text-2xl font-bold mb-2">Full-Scope CRO</h3>
-          <p className="text-sm mb-3">
-            프로토콜 → 모니터링 → 데이터 관리(EDC/DM) → 통계·CSR까지 <br />
+          <p className="text-sm mb-3 leading-6 tracking-tight">
+            프로토콜 → 모니터링 → 데이터 관리(EDC/DM) → 통계·CSR까지
+            <br className="hidden md:block" />
             임상시험 전 과정을 일관성 있게 수행합니다.
           </p>
           <span className="ck-brand font-semibold group-hover:underline">자세히 보기 →</span>
@@ -388,9 +389,10 @@ function ServicesPage(){
         {/* Partial CRO */}
         <NavLink to="/services/partial" className="group block bg-gray-50 hover:bg-white p-6 rounded-2xl border shadow-sm hover:shadow transition">
           <h3 className="text-2xl font-bold mb-2">Partial CRO (Flexible)</h3>
-          <p className="text-sm mb-3">
-            필요한 구간만 선택: Protocol/SAP, 모니터링, 
-            통계·CSR, <br />출판용 임상시험 등 모듈형 지원
+          <p className="text-sm mb-3 leading-6 tracking-tight">
+            필요한 구간만 선택: Protocol/SAP, 모니터링, 통계·CSR,
+            <br className="hidden md:block" />
+            출판용 임상시험 등 모듈형 지원
           </p>
           <span className="ck-brand font-semibold group-hover:underline">자세히 보기 →</span>
         </NavLink>
