@@ -4,16 +4,34 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/MTY_C_b_round2_512.png" />
 
-    <!-- 반응형 뷰포트 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 반응형 뷰포트 (인앱/커스텀탭에서 텍스트 자동확대 억제 포함) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
 
     <!-- 라이트 모드 고정 -->
     <meta name="color-scheme" content="light" />
     <meta name="theme-color" content="#ffffff" />
+
     <style>
       :root { color-scheme: light; }
-      html, body { background:#ffffff; color:#111; }
-      img, svg, picture, video, canvas { filter: none !important; }
+
+      html {
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+      }
+
+      html, body {
+        background:#ffffff; color:#111;
+        width:100%; max-width:100%;
+        overflow-x:hidden; /* 가로 스크롤로 인한 붕괴 방지 */
+      }
+
+      img, svg, picture, video, canvas {
+        max-width:100%; height:auto;
+        filter:none !important; display:block;
+      }
+
+      .break-keep, body { word-break: keep-all; }
+      * { box-sizing: border-box; }
     </style>
 
     <title>C&KInsight</title>
@@ -24,7 +42,7 @@
       rel="stylesheet"
     />
 
-    <!-- ✅ KakaoTalk in-app → 외부 브라우저 열기 (도메인 자동 인식 + fallback 버튼) -->
+    <!-- ✅ KakaoTalk in-app → 브라우저 선택 창으로 열기 (도메인 자동 인식 + fallback 버튼) -->
     <script>
       (function () {
         var ua = navigator.userAgent || '';
@@ -32,25 +50,26 @@
         var isAndroid = /Android/i.test(ua);
         var isIOS     = /iPhone|iPad|iPod/i.test(ua);
 
-        if (!isKakao) return; // 일반 브라우저는 아무 것도 하지 않음
+        if (!isKakao) return; // 일반 브라우저는 아무 것도 안 함
 
-        // 현재 페이지 주소 자동 사용 (Vercel 프리뷰 / 실제 도메인 모두 대응)
-        var ORIGIN = location.origin;
-        var HOST   = location.host;
-        var PATH   = location.pathname + location.search;
-        var SCHEME = location.protocol.replace(':','');
+        // 현재 페이지 주소 자동 사용 (Vercel 프리뷰/실도메인 모두 대응)
+        var ORIGIN = location.origin;                       // ex) https://xxx.vercel.app 또는 https://cnkinsight.com
+        var HOST   = location.host;                         // ex) xxx.vercel.app 또는 cnkinsight.com
+        var PATH   = location.pathname + location.search;   // 경로 + 쿼리
+        var SCHEME = location.protocol.replace(':','');     // ex) https
 
         function openExternal() {
           if (isAndroid) {
-            // Chrome으로 열기 (fallback 포함)
-            var intent = 'intent://' + HOST + PATH +
+            // ✅ 브라우저 선택 창(chooser)으로 열기: Custom Tab 회피
+            var intent =
+              'intent://' + HOST + PATH +
               '#Intent;scheme=' + SCHEME +
-              ';package=com.android.chrome' +
-              ';S.browser_fallback_url=' + encodeURIComponent(ORIGIN + PATH) +
+              ';action=android.intent.action.VIEW' +
+              ';category=android.intent.category.BROWSABLE' +
               ';end';
             location.href = intent;
           } else if (isIOS) {
-            // iOS Safari로 열기
+            // iOS는 Safari로 열기
             location.href = ORIGIN + PATH;
           }
         }
@@ -72,7 +91,7 @@
 
           document.getElementById('open-external-btn').addEventListener('click', function (e) {
             e.preventDefault();
-            openExternal();
+            openExternal(); // 사용자 제스처 기반 재시도 → 성공률↑
           }, { passive:false });
         }
 
@@ -80,19 +99,19 @@
           if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', attachBar, { once: true });
           } else {
-            attachBar();
+            attachBar(); // 이미 로드된 상태면 즉시 부착
           }
         }
 
-        // 1) 자동 시도
+        // 1) 자동 시도 (카톡 인앱에서 열리면 chooser로 외부 브라우저 선택)
         openExternal();
 
-        // 2) 실패 시 fallback 배너 노출
+        // 2) 실패 시 fallback 배너 노출 (여전히 이 페이지에 있으면 실패로 간주)
         setTimeout(function () {
           if (document.visibilityState === 'visible') showFallbackBar();
         }, 700);
 
-        // 3) 페이지 재활성화 시에도 배너 보장
+        // 3) 히스토리 복귀 등 특수 케이스 대비
         window.addEventListener('pageshow', function () {
           if (document.visibilityState === 'visible' && !document.getElementById('open-external-bar')) {
             showFallbackBar();
