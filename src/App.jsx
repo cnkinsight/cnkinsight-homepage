@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { HashRouter as Router, Routes, Route, NavLink, useNavigate, Navigate } from "react-router-dom";
 
 import QA from "./QA";        // ✅ 경로 수정: ./components/QA 가 아니라 ./QA
@@ -17,6 +17,22 @@ const GlobalStyle = () => (
   `}</style>
 );
 
+// ✅ 카톡(해시 라우터)에서도 쿼리스트링을 안정적으로 읽기 위한 유틸
+function getQueryParam(name){
+  // 1) 일반 쿼리
+  const usp = new URLSearchParams(window.location.search);
+  const v1 = usp.get(name);
+  if (v1 !== null && v1 !== undefined) return v1;
+  // 2) HashRouter( #/path?msg=... ) 형태 쿼리
+  const hash = window.location.hash || '';
+  const qIndex = hash.indexOf('?');
+  if (qIndex !== -1){
+    const qs = hash.slice(qIndex + 1);
+    const v2 = new URLSearchParams(qs).get(name);
+    if (v2 !== null && v2 !== undefined) return v2;
+  }
+  return null;
+}
 
 // ---- Shared: Header & Footer ----
 function Header(){
@@ -55,8 +71,6 @@ function PageLayout({breadcrumb, title, children}){
     </main>
   );
 }
-
-
 
 // ---- Home (overview + preview) ----
 function Home(){
@@ -221,8 +235,6 @@ function Home(){
       </div>
       </section>
 
-
-
       {/* Contact CTA */}
       <section className="py-16 px-6 max-w-4xl mx-auto text-center">
         <h2 className="text-3xl font-extrabold mb-4 ck-brand tracking-tight">Start with Insight</h2>
@@ -234,7 +246,6 @@ function Home(){
 }
 
 // ---- About ----
-// 체크 배지 + 텍스트 줄맞춤
 function LegendItem({ title, children }) {
   return (
     <li className="flex items-start gap-3">
@@ -793,7 +804,6 @@ function InsightsPage() {
   );
 }
 
-
 // ---- Case Details ----
 function CaseDTx(){
   return (
@@ -906,7 +916,6 @@ function CaseAISaMD(){
   );
 }
 
-
 function CaseIVDQual(){
   return (
     <PageLayout
@@ -998,7 +1007,6 @@ function CaseIVDQual(){
     </PageLayout>
   );
 }
-
 
 function CaseIVDQuan(){
   return (
@@ -1221,6 +1229,24 @@ function ContactPage() {
   const [status, setStatus] = useState('idle');
   const [errorMsg, setErrorMsg] = useState('');
 
+  // ✅ 카톡→외부브라우저 경유 시 줄바꿈/공백 보존용: URL에서 msg를 안전하게 복원
+  const prefillMessage = useMemo(() => {
+    let raw = getQueryParam('msg') || '';
+    if (!raw) return '';
+
+    // 카톡 경유 시 간혹 '+'가 공백으로 처리되므로 먼저 %20으로 치환
+    if (raw.includes('+')) raw = raw.replace(/\+/g, '%20');
+
+    // 1차 디코드
+    try { raw = decodeURIComponent(raw); } catch {}
+    // 이중 인코딩 보호용 2차 시도
+    try { raw = decodeURIComponent(raw); } catch {}
+
+    // CRLF → LF 통일
+    raw = raw.replace(/\r\n/g, '\n');
+    return raw;
+  }, []);
+
   // Formspree에서 발급받은 엔드포인트로 교체되어 있어야 합니다.
   const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mblpdgqe';
 
@@ -1279,8 +1305,21 @@ function ContactPage() {
         <input name="company" type="text" placeholder="회사명" className="p-3 rounded-lg border" />
         <input name="phone" type="tel" placeholder="연락처" className="p-3 rounded-lg border" />
 
-        {/* 메시지 */}
-        <textarea name="message" placeholder="문의 내용*" className="p-3 rounded-lg border h-32" required />
+        {/* 메시지 (카톡 줄바꿈 복원값을 미리 채움) */}
+        <textarea
+          name="message"
+          placeholder="문의 내용*"
+          defaultValue={prefillMessage}
+          className="p-3 rounded-lg border h-32 whitespace-pre-line"
+          required
+        />
+
+        {/* 읽기전용 미리보기(선택): 카톡 줄바꿈이 제대로 반영됐는지 확인용 */}
+        {prefillMessage && (
+          <div className="p-3 bg-gray-50 border rounded-lg text-sm whitespace-pre-line">
+            {prefillMessage}
+          </div>
+        )}
 
         <button
           type="submit"
