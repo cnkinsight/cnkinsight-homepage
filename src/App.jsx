@@ -102,8 +102,8 @@ function Home(){
       <NavLink to="/services/partial" className="group bg-white p-8 rounded-2xl shadow hover:shadow-lg transition block">
         <h3 className="text-2xl font-bold mb-2">Partial CRO</h3>
         <ul className="list-disc ml-5 text-sm leading-relaxed space-y-1">
-          <li>내부 리소스·예산 상황에 맞춘 맞춤형 모듈 서비스</li>
-          <li>(Protocol/SAP, 모니터링, 통계·CSR 등)</li>
+          <li>내부 리소스·예산 상황에 맞춘 맞춤형 모듈형 서비스</li>
+          <li>Protocol/SAP, 모니터링, 통계·CSR 등 필요 기능별 수행 지원</li>
         </ul>
         <span className="mt-4 inline-block ck-brand font-semibold group-hover:underline">자세히 보기 →</span>
       </NavLink>
