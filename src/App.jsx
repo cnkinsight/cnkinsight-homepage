@@ -999,7 +999,7 @@ function CaseIVDQuan(){
     >
       <p className="mb-6">
         CMV, CK-MB, NT-proBNP 등 정량 IVD 키트 임상시험을 수행하며 MFDS 허가를 지원.
-        <strong> 정량 통계분석 방법론 가이드 제안·검수 경험</strong>을 기반으로 Passing-Bablok 회귀, Bland–Altman 분석, 상관계수 등 정밀 분석을 적용했습니다.
+        <strong> 정량 통계분석 방법론 가이드 제안·검수 경험</strong>을 기반으로 Passing-Bablok 회귀, Bland–Altman 분석, 상관계수 등 통계분석을 적용한 경험.
       </p>
 
       {/* CMV */}
