@@ -23,6 +23,25 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+
+    <!-- ✅ 카카오톡 인앱 브라우저 감지 → 외부 브라우저 리디렉트 -->
+    <script>
+      (function() {
+        var ua = navigator.userAgent.toLowerCase();
+        var isKakao = ua.indexOf('kakaotalk') > -1;
+        if (isKakao) {
+          if (/android/i.test(ua)) {
+            // Android → Chrome으로 열기
+            location.href = 'intent://cnkinsight.com#Intent;scheme=https;package=com.android.chrome;end';
+          } else if (/iphone|ipad|ipod/i.test(ua)) {
+            // iOS → Safari로 열기
+            setTimeout(function() {
+              window.location.href = 'https://cnkinsight.com';
+            }, 100);
+          }
+        }
+      })();
+    </script>
   </head>
   <body class="bg-white text-gray-900">
     <div id="root"></div>
