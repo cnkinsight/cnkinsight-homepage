@@ -2,12 +2,12 @@ export default function QA({ q, a }) {
   return (
     <div className="border rounded-xl p-4 bg-white shadow-sm">
       <details>
-        <summary className="w-full text-left flex items-center justify-between cursor-pointer">
+        <summary className="w-full text-left flex items-start justify-between cursor-pointer min-h-[72px] leading-snug ">
           <span className="font-semibold">{q}</span>
           <span className="ck-brand text-xl ml-2">+</span>
         </summary>
         <div
-          className="mt-3 text-sm leading-relaxed"
+          className="mt-1 text-sm leading-relaxed text-left"
           dangerouslySetInnerHTML={{ __html: a }}   // <br/>, <p> 등 HTML 반영
         />
       </details>

@@ -75,6 +75,13 @@ function PageLayout({breadcrumb, title, children}){
 // ---- Home (overview + preview) ----
 function Home(){
   const navigate = useNavigate();
+
+  // 👇 여기! 이 줄들 추가
+  const isMobileUA = useMemo(() => {
+    if (typeof navigator === "undefined") return false;
+    return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  }, []);
+
   return (
     <main>
       {/* Hero Section */}
@@ -150,32 +157,52 @@ function Home(){
         <h2 className="text-3xl font-extrabold text-center ck-brand mb-8 tracking-tight">Case Studies</h2>
         <div className="grid md:grid-cols-3 gap-6">
           {/* DTx */}
-          <NavLink to="/cases/dtx" className="group bg-white p-6 rounded-xl shadow hover:shadow-lg transition block">
-            <h3 className="text-xl font-bold mb-2">Digital Therapeutics (DTx)</h3>
+          <NavLink 
+             to="/cases/dtx" 
+             className="group bg-white p-6 rounded-xl shadow hover:shadow-lg transition block">
+            <h3 className="text-xl font-bold mb-2 leading-snug">
+              {isMobileUA ? "DTx" : "Digital Therapeutics (DTx)"}
+            </h3>
             <p className="text-sm">국내 최초 디지털치료제 IND 승인 경험</p>
           </NavLink>
 
           {/* AI-SaMD */}
-          <NavLink to="/cases/ai-samd" className="group bg-white p-6 rounded-xl shadow hover:shadow-lg transition block">
-            <h3 className="text-xl font-bold mb-2">AI-SaMD / Diagnostic AI</h3>
+          <NavLink 
+             to="/cases/ai-samd" 
+             className="group bg-white p-6 rounded-xl shadow hover:shadow-lg transition block">
+            <h3 className="text-xl font-bold mb-2 leading-snug">
+              {isMobileUA ? "AI-SaMD" : "AI-SaMD / Diagnostic AI"}
+            </h3>
             <p className="text-sm">다양한 적응증·평가변수 경험 보유</p>
           </NavLink>
 
           {/* IVD (Qualitative) */}
-          <NavLink to="/cases/ivd-qual" className="group bg-white p-6 rounded-xl shadow hover:shadow-lg transition block">
-            <h3 className="text-xl font-bold mb-2">IVD (Qualitative)</h3>
+          <NavLink
+             to="/cases/ivd-qual" 
+             className="group bg-white p-6 rounded-xl shadow hover:shadow-lg transition block">
+            <h3 className="text-xl font-bold mb-2 leading-snug">
+              {isMobileUA ? "IVD(Qual)" : "IVD (Qualitative)"}
+              </h3>
             <p className="text-sm">2016년부터 다양한 적응증 임상 경험</p>
           </NavLink>
 
           {/* IVD (Quantitative) */}
-          <NavLink to="/cases/ivd-quant" className="group bg-white p-6 rounded-xl shadow hover:shadow-lg transition block">
-            <h3 className="text-xl font-bold mb-2">IVD (Quantitative)</h3>
+          <NavLink 
+             to="/cases/ivd-quant" 
+             className="group bg-white p-6 rounded-xl shadow hover:shadow-lg transition block">
+            <h3 className="text-xl font-bold mb-2 leading-snug">
+              {isMobileUA ? "IVD(Quant)" : "IVD (Quantitative)"}
+              </h3>
             <p className="text-sm">정량 임상통계 방법론 정립·검증 경험</p>
           </NavLink>
 
           {/* Medical Supplies */}
-          <NavLink to="/cases/med-supplies" className="group bg-white p-6 rounded-xl shadow hover:shadow-lg transition block">
-            <h3 className="text-xl font-bold mb-2">Medical Supplies / Accessorie</h3>
+          <NavLink 
+             to="/cases/med-supplies" 
+             className="group bg-white p-6 rounded-xl shadow hover:shadow-lg transition block">
+            <h3 className="text-xl font-bold mb-2 leading-snug">
+              {isMobileUA ? "Med Supplies": "Medical Supplies / Accessorie"}
+            </h3>
             <p className="text-sm">혈압·생활용품 등 다양한 현장 경험</p>
           </NavLink>
         </div>
@@ -200,7 +227,9 @@ function Home(){
       to="/insights/samplesize"
       className="group bg-white p-6 rounded-xl border shadow-sm hover:shadow-md transition block"
       >
-      <h3 className="text-lg font-bold mb-2">Sample Size Determination Journey</h3>
+      <h3 className="text-xl font-bold mb-2  min-h-[72px] leading-snug">
+              {isMobileUA ? "Design" : "Sample Size Determination Journey"}
+      </h3>
       <p className="text-sm text-gray-600">Clinical success → right ‘n’ by rigorous stats</p>
       </NavLink>
 
@@ -209,7 +238,9 @@ function Home(){
       to="/insights/ai-samd"
       className="group bg-white p-6 rounded-xl border shadow-sm hover:shadow-md transition block"
       >
-      <h3 className="text-lg font-bold mb-2">AI-SaMD: From Purpose to Endpoints</h3>
+      <h3 className="text-xl font-bold mb-2 min-h-[72px] leading-snug">
+              {isMobileUA ? "AI-SaMD" : "AI-SaMD: From Purpose to Endpoints"}
+      </h3>
       <p className="text-sm text-gray-600">Align endpoints with purpose; bridge to approval</p>
       </NavLink>
 
@@ -218,7 +249,9 @@ function Home(){
       to="/insights/dtx"
       className="group bg-white p-6 rounded-xl border shadow-sm hover:shadow-md transition block"
       >
-      <h3 className="text-lg font-bold mb-2">DTx in the Clinical Ecosystem</h3>
+      <h3 className="text-xl font-bold mb-2 min-h-[72px] leading-snug">
+              {isMobileUA ? "Dtx" : "DTx in the Clinical Ecosystem"}
+      </h3>
       <p className="text-sm text-gray-600">CBT, adherence, lifestyle—care beyond hospitals</p>
       </NavLink>
 
@@ -228,7 +261,9 @@ function Home(){
       to="/insights/ivd"
       className="group bg-white p-6 rounded-xl border shadow-sm hover:shadow-md transition block"
       >
-      <h3 className="text-lg font-bold mb-2">Biomarkers & Longitudinal Evidence</h3>
+      <h3 className="text-xl font-bold mb-2 min-h-[72px] leading-snug">
+              {isMobileUA ? "IVD" : "Biomarkers & Longitudinal Evidence"}
+      </h3>
       <p className="text-sm text-gray-600">Track over time to confirm clinical value</p>
       </NavLink>
       </div>
@@ -357,20 +392,16 @@ function AboutPage(){
 
         {/* 왜 C&KInsight인가 */}
         <section className="grid md:grid-cols-2 gap-6">
-          <div className="p-6 rounded-xl border">
+          <div className="p-6 rounded-xl border text-left">
             <h4 className="font-semibold mb-2">One‑Team Execution</h4>
-            <p className="text-sm">초기 가설부터 허가 심사까지 동일한 코어 팀이 리드하여 의사결정의 일관성을 유지합니다.</p>
+            <p className="text-[13.5px] md:text-sm leading-6 tracking-tight">
+              초기 가설부터 허가 심사까지 동일한 코어 팀이 리드하여 의사결정의 일관성을 유지합니다.</p>
           </div>
-          <div className="p-6 rounded-xl border">
+          <div className="p-6 rounded-xl border text-left">
             <h4 className="font-semibold mb-2">Flexible Engagement</h4>
             <p className="text-[13.5px] md:text-sm leading-6 tracking-tight">
-              {/* 모바일: 줄바꿈 허용 + 긴 단어도 강제 줄바꿈 / 데스크톱: 한 줄 유지 */}
-              <span className="whitespace-normal break-words md:whitespace-nowrap">
-                Full-Scope 또는 Partial 모듈(Protocol/SAP, 모니터링, 통계·CSR 등)로
-              </span>
-              <span className="block">
-                상황에 맞춰 계약 가능합니다.
-              </span>
+              Full-Scope 또는 Partial 모듈(Protocol/SAP, 모니터링, 통계·CSR 등)로
+              상황에 맞춰 계약 가능합니다.
             </p>
           </div>
         </section>
@@ -391,11 +422,8 @@ function ServicesPage(){
         {/* Full-Scope CRO */}
         <NavLink to="/services/full-scope" className="group block bg-gray-50 hover:bg-white p-6 rounded-2xl border shadow-sm hover:shadow transition">
           <h3 className="text-2xl font-bold mb-2">Full-Scope CRO</h3>
-          <p className="text-sm mb-3 leading-6 tracking-tight break-keep">
-            <span className="inline">
-              프로토콜 → 모니터링 → 데이터 관리(EDC/DM) → 통계·CSR까지
-            </span>
-            <span className="hidden md:inline"><br /></span>
+          <p className="text-sm mb-3 tracking-tighter text-left">
+            프로토콜 → 모니터링 → 데이터 관리(EDC/DM) → 통계·CSR까지
             임상시험 전 과정을 일관성 있게 수행합니다.
           </p>
 
@@ -405,11 +433,8 @@ function ServicesPage(){
         {/* Partial CRO */}
         <NavLink to="/services/partial" className="group block bg-gray-50 hover:bg-white p-6 rounded-2xl border shadow-sm hover:shadow transition">
           <h3 className="text-2xl font-bold mb-2">Partial CRO (Flexible)</h3>
-          <p className="text-sm mb-3 leading-6 tracking-tight break-keep">
-            <span className="inline">
-              필요한 구간만 선택: Protocol/SAP, 모니터링, 통계·CSR,
-            </span>
-            <span className="hidden md:inline"><br /></span>
+          <p className="text-sm mb-3 tracking-tighter text-left">
+            필요한 구간만 선택: Protocol/SAP, 모니터링, 통계·CSR,
             출판용 임상시험 등 모듈형 지원
           </p>
           <span className="ck-brand font-semibold group-hover:underline">자세히 보기 →</span>
@@ -418,8 +443,8 @@ function ServicesPage(){
         {/* Regulatory Consulting */}
         <NavLink to="/services/regulatory" className="group block bg-gray-50 hover:bg-white p-6 rounded-2xl border shadow-sm hover:shadow transition">
           <h3 className="text-2xl font-bold mb-2">Regulatory Consulting</h3>
-          <p className="text-sm mb-3">
-            국내 허가(MFDS) 전략·심사 대응 중심, <br />
+          <p className="text-sm mb-3 tracking-tighter text-left">
+            국내 허가(MFDS) 전략·심사 대응 중심, 
             FDA·CE 인증 준비 기업에는 설계·문서화 가이드 제공
           </p>
           <span className="ck-brand font-semibold group-hover:underline">자세히 보기 →</span>
@@ -428,8 +453,8 @@ function ServicesPage(){
         {/* Special Expertise */}
         <NavLink to="/services/expertise" className="group block bg-gray-50 hover:bg-white p-6 rounded-2xl border shadow-sm hover:shadow transition">
           <h3 className="text-2xl font-bold mb-2">Special Expertise</h3>
-          <p className="text-sm mb-3">
-            DTx, AI-SaMD, IVD 등 최신 의료기기 분야 경험 <br />
+          <p className="text-sm mb-3 tracking-tighter text-left">
+            DTx, AI-SaMD, IVD 등 최신 의료기기 분야 경험 
             새로운 개발 전략과 임상 설계 지원
           </p>
           <span className="ck-brand font-semibold group-hover:underline">자세히 보기 →</span>
@@ -471,11 +496,11 @@ function ServicesPage(){
       {/* 프로세스 타임라인 */}
       <div className="mb-10">
         <h3 className="text-xl font-bold mb-3">표준 수행 프로세스 (예)</h3>
-        <ol className="grid md:grid-cols-6 gap-4">
+        <ol className="grid grid-cols-2 md:grid-cols-6 gap-4">
           {['Kick‑off','Protocol/SAP','CM/Monitoring','EDC/DM','Stats & CSR','Submission'].map((s,i)=> (
             <li key={s} className="bg-white rounded-xl border p-4 text-center shadow-sm">
               <div className="text-3xl font-extrabold ck-brand">{i+1}</div>
-              <div className="mt-1 text-sm">{s}</div>
+              <div className="mt-1 text-sm break-words">{s}</div>
             </li>
           ))}
         </ol>
@@ -484,51 +509,50 @@ function ServicesPage(){
       {/* FAQ */}
       <div>
         <h3 className="text-xl font-bold mb-3">자주 받는 질문(FAQ)</h3>
-        <div className="grid md:grid-cols-2 gap-4">
+        <div className="grid md:grid-cols-2 gap-4 tracking-tight">
           <QA q="Partial로 시작했다가 Full‑Scope로 전환할 수 있나요?" 
                a="네, 가능합니다.<br/>
-                  진행 중인 Partial 범위를 검토한 뒤, 일정과 인력 구성을<br/>
-                  Full-Scope 체계로 확장하여 관리합니다.<br/>
+                  진행 중인 Partial 범위를 검토한 뒤, 일정과 인력 구성을
+                  Full-Scope 체계로 확장하여 관리합니다.
                   이미 수행된 단계의 결과물은 동일한 품질 기준에 따라 통합 관리되며, 
                   이후 과정은 하나의 프로젝트로 일관되게 운영됩니다."/>
           <QA q="EDC/DM만 별도로 맡길 수 있나요?" 
               a="네, 가능합니다.<br/>
-                 EDC 구축 및 데이터 관리는 단독 과업으로도 수행할 수 있습니다.<br/>
-                 CRScube 등 검증된 임상 데이터관리(EDC/DM) 시스템을 활용하여<br/>
-                 데이터 구조 설계, 질 관리(QC), Lock까지 전 과정을 지원합니다.<br/>
-                 타 기관 또는 자체 수행 중인 임상시험이라도, 기존 프로토콜과 연동 <br/>
+                 EDC 구축 및 데이터 관리는 단독 과업으로도 수행할 수 있습니다.
+                 CRScube 등 검증된 임상 데이터관리(EDC/DM) 시스템을 활용하여
+                 데이터 구조 설계, 질 관리(QC), Lock까지 전 과정을 지원합니다.
+                 타 기관 또는 자체 수행 중인 임상시험이라도, 기존 프로토콜과 연동 
                  가능한 형태로 맞춤 구축이 가능합니다."/>
           <QA q="AI-SaMD의 임상 설계는 기능별로 어떻게 달라지나요?" 
-              a="AI-SaMD는 예측·진단·치료보조 등 기능 틀은 유사하지만,<br/>
-               실제 설계는 적응증의 특성에 따라 달라집니다.<br/> 
+              a="AI-SaMD는 예측·진단·치료보조 등 기능 틀은 유사하지만,
+               실제 설계는 적응증의 특성에 따라 달라집니다.
                예를 들어 폐렴 진단 AI는 기존 판독 대비 민감도·특이도 및 AUC 입증이 핵심이며, 
                 이를 위해 데이터셋 다양성, Gold standard 정의, 독립 검증 코호트 확보가 필수입니다."/>
           <QA q="IMFDS의 임상적 성능시험과 EU IVDR의 Clinical Performance Evaluation은 무엇이 다른가요?" 
-              a="EU IVDR에서는 문헌, 임상 경험, 임상적 성능시험 데이터를<br/>
-                 모두 통합하여 Clinical Evidence로 정의하고,<br/> 
-                 이를 Clinical Performance Evaluation(CPE) 안에서 종합적으로<br/>
+              a="EU IVDR에서는 문헌, 임상 경험, 임상적 성능시험 데이터를
+                 모두 통합하여 Clinical Evidence로 정의하고,
+                 이를 Clinical Performance Evaluation(CPE) 안에서 종합적으로
                  검토합니다. 반면 MFDS는 임상적 성능시험에 대해 별도의 사전 승인 절차는 없으나, 
-                 IRB 승인 하에 수행된 계획서와 결과보고서를<br/>
-                 허가 심사 시 함께 검토합니다.<br/> 
-                 따라서 국내 허가에서는 문헌·임상경험만으로는 충분하지 않으며,<br/> 
+                 IRB 승인 하에 수행된 계획서와 결과보고서를
+                 허가 심사 시 함께 검토합니다.
+                 따라서 국내 허가에서는 문헌·임상경험만으로는 충분하지 않으며,
                  실제 환자 기반의 임상적 성능시험 자료 제출이 핵심입니다."/>
           <QA q="홈페이지를 통해 상담 요청한 이후 절차를 어떻게 진행되나요?" 
               a="홈페이지를 통해 상담 요청이 접수되면,
-                 먼저 제출하신 내용을 검토한 뒤 담당 컨설턴트가 이메일로 세부 사항을 확인드립니다.<br/>
+                 먼저 제출하신 내용을 검토한 뒤 담당 컨설턴트가 이메일로 세부 사항을 확인드립니다.
                  필요 시 추가 자료나 질의를 주고받은 후, 미팅 일정(온라인 또는 대면)을 조율하여 구체적인 논의로 이어집니다.
                  이후 협의된 범위를 기반으로 프로젝트 제안서와 견적서를 단계별로 안내해드립니다."/>  
           <QA q="정부과제와 연계 가능한가요?" 
               a="네, 가능합니다.<br/>
-                 TIPS, 범부처 과제, 보건의료 R&D 등 정부과제 기반 연구와 연계해<br/> 수행할 수 있습니다.<br/>
-                 연구비 구조와 과제 일정에 맞춰 단계별 견적, 산출근거,<br/>
-                 과업 분리 계약을 지원하며, 필요 시 예산서, 과제 산출물 등 <br/>
+                 TIPS, 범부처 과제, 보건의료 R&D 등 정부과제 기반 연구와 연계해 수행할 수 있습니다.
+                 연구비 구조와 과제 일정에 맞춰 단계별 견적, 산출근거, 
+                 과업 분리 계약을 지원하며, 필요 시 예산서, 과제 산출물 등 
                  과제 제출 서류 형태로 맞추어 제공해드립니다."/>
           <QA q="Insight라는 개념은 무엇을 의미하나요?"
               a="C&KInsight가 말하는 Insight는 단순한 실행이 아니라, 
-                 제품 특성과 목표에 맞는 임상·허가 전략을 정확히 짚어내는 관점을 의미합니다.<br/> 
+                 제품 특성과 목표에 맞는 임상·허가 전략을 정확히 짚어내는 관점을 의미합니다.  
                  무엇을, 왜, 어떤 방식으로 진행해야 가장 효율적인지를 함께 고민하며, 임상 설계부터 데이터 관리, 허가 대응까지 
-                 현실적인 방향을 제시하는<br/>
-                 경험과 판단력이 우리의 Insight입니다."/>
+                 현실적인 방향을 제시하는 경험과 판단력이 우리의 Insight입니다."/>
                                 
         </div>
       </div>
@@ -551,9 +575,9 @@ function FullScopePage(){
         <span className="font-semibold text-yellow-600">
         프로토콜 설계부터 모니터링, 데이터 관리(EDC/DM), 통계 분석, CSR 작성</span>까지 임상시험 전 과정을 일관성 있게 수행합니다. <br /> 
         <span className="font-semibold text-yellow-600">
-        국내 허가(MFDS)</span>를 중심으로 지원하며, FDA·CE 인증을 준비하는 업체에는
-        <span className="font-semibold text-yellow-600">
-        글로벌 규제 요구를 반영한 연구 설계 및 문서화 가이드</span>도 <br/>제공합니다.</p>
+        국내 허가(MFDS)</span>를 중심으로 지원하며, FDA·CE 인증을 준비하는 업체에는{" "} 
+        <span className="font-semibold text-yellow-600 tracking-tight">
+        글로벌 규제 요구를 반영한 연구 설계 및 문서화 가이드</span>도 제공합니다.</p>
       <ul className="list-disc ml-6 space-y-1 mb-6">
         <li>임상 전략 수립 / Protocol · SAP 설계</li>
         <li>사이트 셋업 · 모니터링 · 품질관리</li>
@@ -628,6 +652,8 @@ function ExpertisePage(){
 
 // ---- Cases Overview ----
 function CasesPage(){
+  const isMobileUA = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  
   return (
     <PageLayout title="Case Studies" breadcrumb={<NavLink to="/" className="hover:underline">Home</NavLink>}>
       <p className="mb-8">실제 수행한 프로젝트 사례를 통해 C&KInsight의 실행력을 확인하세요. 카드를 눌러 상세로 이동합니다.</p>
@@ -636,8 +662,13 @@ function CasesPage(){
       <NavLink to="/cases/dtx" 
         className="group bg-white p-6 rounded-xl border shadow-sm hover:shadow transition flex flex-col h-full">
         <div className="flex-grow">
-          <h3 className="text-xl font-bold mb-2">Digital Therapeutics (DTx)</h3>
-          <p className="text-sm mb-4">항암, 천식, 알레르기 비염 등<br/> | MFDS 임상 승인</p>
+           <h3 className="text-xl font-bold mb-2 min-h-[56px]">
+             {isMobileUA ? "DTx" : "Digital Therapeutics (DTx)"}</h3>
+          <p className="text-sm mb-4">
+            {isMobileUA
+             ? "항암·천식·비염 등 MFDS 승인"
+             : <>항암, 천식, 알레르기 비염 등<br/> | MFDS 임상 승인</>}
+          </p>
         </div>
         <span className="ck-brand font-semibold group-hover:underline mt-auto">사례 보기 →</span>
       </NavLink>
@@ -646,8 +677,14 @@ function CasesPage(){
       <NavLink to="/cases/ai-samd" 
         className="group bg-white p-6 rounded-xl border shadow-sm hover:shadow transition flex flex-col h-full">
         <div className="flex-grow">
-          <h3 className="text-xl font-bold mb-2">AI-SaMD / Diagnostic AI</h3>
-          <p className="text-sm mb-4">호흡기, 희귀, 감상선암 등<br/>  | MFDS 허가, FDA 승인</p>
+          <h3 className="text-xl font-bold mb-2 min-h-[56px]">
+            {isMobileUA ? "AI-SaMD" : "AI-SaMD / Diagnostic AI"}
+          </h3>
+          <p className="text-sm mb-4">
+            {isMobileUA
+              ? "호흡기·희귀·갑상선암 등 MFDS·FDA 승인"
+              : <>호흡기, 희귀, 갑상선암 등<br />| MFDS 허가, FDA 승인</>}
+          </p>
         </div>
         <span className="ck-brand font-semibold group-hover:underline mt-auto">사례 보기 →</span>
       </NavLink>
@@ -656,8 +693,14 @@ function CasesPage(){
       <NavLink to="/cases/ivd-qual" 
         className="group bg-white p-6 rounded-xl border shadow-sm hover:shadow transition flex flex-col h-full">
         <div className="flex-grow">
-          <h3 className="text-xl font-bold mb-2">IVD (Qualitative)</h3>
-          <p className="text-sm mb-4">STD, RV, Sepsis 등<br/>  | MFDS 허가</p>
+              <h3 className="text-xl font-bold mb-2 min-h-[56px]">
+                {isMobileUA ? "IVD(Qual)" : "IVD (Qualitative)"}
+              </h3>
+              <p className="text-sm mb-4">
+                {isMobileUA
+                  ? "STD·RV·Sepsis 등 MFDS 허가"
+                  : <>STD, RV, Sepsis 등<br />| MFDS 허가</>}
+              </p>
         </div>
         <span className="ck-brand font-semibold group-hover:underline mt-auto">사례 보기 →</span>
       </NavLink>
@@ -666,8 +709,14 @@ function CasesPage(){
       <NavLink to="/cases/ivd-quant" 
         className="group bg-white p-6 rounded-xl border shadow-sm hover:shadow transition flex flex-col h-full">
         <div className="flex-grow">
-          <h3 className="text-xl font-bold mb-2">IVD (Quantitative)</h3>
-          <p className="text-sm mb-4">CMV, CK-MB, NT-proBNP 등<br/>  | MFDS 허가</p>
+          <h3 className="text-xl font-bold mb-2 min-h-[56px]">
+            {isMobileUA ? "IVD(Quant)" : "IVD (Quantitative)"}
+          </h3>
+          <p className="text-sm mb-4">
+            {isMobileUA
+              ? "CMV·CK-MB·NT-proBNP 등 MFDS 허가"
+              : <>CMV, CK-MB, NT-proBNP 등<br />| MFDS 허가</>}
+          </p>
         </div>
         <span className="ck-brand font-semibold group-hover:underline mt-auto">사례 보기 →</span>
       </NavLink>
@@ -676,8 +725,14 @@ function CasesPage(){
       <NavLink to="/cases/med-supplies" 
         className="group bg-white p-6 rounded-xl border shadow-sm hover:shadow transition flex flex-col h-full">
         <div className="flex-grow">
-          <h3 className="text-xl font-bold mb-2">Medical Supplies / Accessories</h3>
-          <p className="text-sm mb-4">혈압 관리 등<br/>  | MFDS 임상 승인</p>
+          <h3 className="text-xl font-bold mb-2 min-h-[56px]">
+            {isMobileUA ? "Med Supplies" : "Medical Supplies / Accessories"}
+          </h3>
+          <p className="text-sm mb-4">
+            {isMobileUA
+              ? "혈압 관리 등 MFDS 승인"
+              : <>혈압 관리 등<br />| MFDS 임상 승인</>}
+          </p>
         </div>
         <span className="ck-brand font-semibold group-hover:underline mt-auto">사례 보기 →</span>
       </NavLink>
@@ -690,6 +745,9 @@ function CasesPage(){
 
 // ---- Insights Overview ----
 function InsightsPage() {
+  const isMobileUA = /Android|iPhone|iPad|iPod/i.test(
+  typeof navigator !== "undefined" ? navigator.userAgent : ""
+  );
   // 재사용 카드
   const InsightCard = ({ to, title, desc }) => (
     <NavLink
@@ -697,7 +755,10 @@ function InsightsPage() {
       className="group bg-white p-6 rounded-xl border shadow-sm hover:shadow-md transition block h-full"
     >
       <div className="h-full flex flex-col">
-        <h3 className="text-lg font-bold mb-2">{title}</h3>
+        {/* ✅ 제목 높이 고정 */}
+        <h3 className="text-lg font-bold mb-2 leading-snug min-h-[72px]">
+          {title}
+        </h3>
         <p className="text-sm text-gray-600 clamp-2 flex-1">{desc}</p>
         <div className="mt-4 flex justify-end">
           <span className="ck-brand text-sm font-semibold group-hover:underline">
@@ -729,14 +790,14 @@ function InsightsPage() {
           <div className="mt-6 flex flex-col md:flex-row items-start gap-6 md:gap-10">
             {/* 왼쪽: 문단 + 불릿 묶음 */}
             <div className="md:flex-1 min-w-0">   {/* ← 좌측 영역은 남는 폭 다 쓰고, 넘침 방지 */}
-              <p className="text-[16px] leading-relaxed text-gray-700 mb-7">
+              <p className="text-[16px] text-left leading-relaxed text-gray-700 mb-7">
                 복잡한 규제·임상·통계 과정에서 단계가 분절되면 <br/>결과는 목적에서 멀어집니다.<br/>
-                <span className="inline-block">
+                <span className="inline-block text-left">
                   {/* ← nowrap 제거로 과도한 가로폭 방지 */}
                   C&KInsight는 전체를 조망하는 <strong>Insight</strong>로 각 단계를 정렬하고,
                 </span>
                 <br/>
-                <span className="inline-block">
+                <span className="inline-block text-left ">
                   <strong>목적 정합적 결과</strong>로 연결합니다.
                 </span>
               </p>
@@ -779,24 +840,47 @@ function InsightsPage() {
       </p>
 
       <div className="grid md:grid-cols-4 gap-6 items-stretch">
+        {/* 1. Sample Size */}
         <InsightCard
           to="/insights/samplesize"
-          title="Sample Size Determination Journey"
+          title={
+            isMobileUA
+              ? "Design"
+              : "Sample Size Determination Journey"
+          }
           desc="Clinical success criteria, statistical rigor, and representative populations converge to define the right ‘n’ for your study."
         />
+
+        {/* 2. AI-SaMD */}
         <InsightCard
           to="/insights/ai-samd"
-          title="AI-SaMD: From Purpose to Endpoints"
+          title={
+            isMobileUA
+              ? "AI-SaMD"
+              : "AI-SaMD: From Purpose to Endpoints"
+          }
           desc="AI-based devices require endpoints aligned with clinical purpose, bridging algorithm performance with regulatory approval."
         />
+
+        {/* 3. DTx */}
         <InsightCard
           to="/insights/dtx"
-          title="DTx in the Clinical Ecosystem"
+          title={
+            isMobileUA
+              ? "DTx"
+              : "DTx in the Clinical Ecosystem"
+          }
           desc="Digital therapeutics extend care beyond hospitals, enabling CBT training, adherence monitoring, and lifestyle modification."
         />
+
+        {/* 4. IVD / Biomarkers */}
         <InsightCard
           to="/insights/ivd"
-          title="IVD: Biomarkers & Longitudinal Evidence"
+          title={
+            isMobileUA
+              ? "IVD"
+              : "IVD: Biomarkers & Longitudinal Evidence"
+          }
           desc="Novel biomarkers demand longitudinal validation—tracking changes over time to confirm predictive and clinical value."
         />
       </div>
@@ -811,6 +895,11 @@ function CaseDTx(){
       breadcrumb={<NavLink to="/cases" className="hover:underline">Case Studies</NavLink>}
       title="Digital Therapeutics (DTx) 사례"
     >
+
+      <p className="mb-6 text-left tracking-tight">
+        다양한 적응증 <strong> 맞춤 설계</strong> 및 MFDS 승인 경험 보유 
+      </p>
+
       {/* Cancer Supportive Care */}
       <div className="mb-8">
         <h3 className="font-bold text-lg mb-2">DTx · Cancer Supportive Care (Anticancer DTx)</h3>
@@ -872,7 +961,7 @@ function CaseAISaMD(){
       breadcrumb={<NavLink to="/cases" className="hover:underline">Case Studies</NavLink>} 
       title="AI-SaMD 임상·허가 전주기 경험"
     >
-      <p className="mb-6">MFDS 임상 승인·허가를 중심으로, FDA 승인을 포함한 폭넓은 경험.</p>
+      <p className="mb-6 text-left tracking-tight">MFDS 임상 승인·허가를 중심으로, FDA 승인을 포함한 폭넓은 경험.</p>
 
       {/* Obstructive Sleep Apnea */}
       <div className="mb-8">
@@ -922,7 +1011,7 @@ function CaseIVDQual(){
       breadcrumb={<NavLink to="/cases" className="hover:underline">Case Studies</NavLink>}
       title="IVD (Qualitative) MFDS 허가 사례"
     >
-      <p className="mb-6">
+      <p className="mb-6 text-left tracking-tight">
         다양한 정성적 IVD 진단 키트의 임상시험을 설계·수행하여 MFDS 허가 및 IRB 승인을 지원한 경험.
       </p>
 
@@ -1014,8 +1103,8 @@ function CaseIVDQuan(){
       breadcrumb={<NavLink to="/cases" className="hover:underline">Case Studies</NavLink>}
       title="IVD (Quantitative) MFDS 허가 및 통계 방법론 적용"
     >
-      <p className="mb-6">
-        CMV, CK-MB, NT-proBNP 등 정량 IVD 키트 임상시험을 수행하며 MFDS 허가를 지원.
+      <p className="mb-6 text-left tracking-tight">
+        CMV, CK-MB, NT-proBNP 등 정량 IVD 키트 임상시험을 수행하며 MFDS 허가를 지원.<br/>
         <strong> 정량 통계분석 방법론 가이드 제안·검수 경험</strong>을 기반으로 Passing-Bablok 회귀, Bland–Altman 분석, 상관계수 등 통계분석을 적용한 경험.
       </p>
 
@@ -1093,7 +1182,7 @@ function CaseMedSupplies(){
       breadcrumb={<NavLink to="/cases" className="hover:underline">Case Studies</NavLink>}
       title="Other Medical Devices MFDS 임상 승인 경험"
     >
-      <p className="mb-6">
+      <p className="mb-6 text-left tracking-tight">
         혈압 관리 기기와 조직 고정 시스템 등 다양한 Medical Devices의 임상시험을 수행하며 
         <strong> MFDS 임상 승인 및 규제 제출</strong>을 지원한 경험.
       </p>
@@ -1136,7 +1225,7 @@ function InsightSampleSize() {
       title="Sample Size Determination Journey"
     >
       {/* 설명 */}
-      <p className="mb-6 italic text-gray-700 text-center">
+      <p className="mb-6 italic text-gray-700 text-center tracking-tighter">
         "Clinical success criteria, statistical rigor, and representative populations converge
         to define the right ‘n’ for your study."
       </p>
@@ -1160,7 +1249,7 @@ function InsightAI(){
       breadcrumb={<NavLink to="/insights" className="hover:underline">Insights</NavLink>}
       title="AI-SaMD: From Purpose to Endpoints"
     >
-      <p className="mb-6 italic text-gray-700 text-center">
+      <p className="mb-6 italic text-gray-700 text-center tracking-tighter">
         "AI-based devices require endpoints aligned with clinical purpose, bridging algorithm performance with regulatory approval."
       </p>
 
@@ -1184,7 +1273,7 @@ function InsightDTx(){
       breadcrumb={<NavLink to="/insights" className="hover:underline">Insights</NavLink>}
       title="DTx in the Clinical Ecosystem"
     >
-      <p className="mb-6 italic text-gray-700 text-center">
+      <p className="mb-6 italic text-gray-700 text-center tracking-tighter">
         “Digital therapeutics extend care beyond hospitals, enabling CBT training, adherence monitoring, and lifestyle modification.”
       </p>
 
@@ -1207,7 +1296,7 @@ function InsightIVD(){
       breadcrumb={<NavLink to="/insights" className="hover:underline">Insights</NavLink>}
       title="DTx in the Clinical Ecosystem"
     >
-      <p className="mb-6 italic text-gray-700 text-center">
+      <p className="mb-6 italic text-gray-700 text-center tracking-tighter">
         “Novel biomarkers demand longitudinal validation—tracking changes over time to confirm predictive and clinical value.”
       </p>
 
