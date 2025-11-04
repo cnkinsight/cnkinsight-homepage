@@ -35,23 +35,47 @@ function getQueryParam(name){
 }
 
 // ---- Shared: Header & Footer ----
-function Header(){
-  const nav = ({isActive})=>`px-2 py-1 ${isActive?'ck-brand font-semibold':'hover:text-yellow-500'}`;
+function Header() {
+  const nav = ({ isActive }) =>
+    `px-2 py-1 whitespace-nowrap ${
+      isActive ? "ck-brand font-semibold" : "hover:text-yellow-500"
+    }`;
+
   return (
-        <header className="sticky top-0 z-50 flex items-center justify-between px-10 py-6 bg-white/90 backdrop-blur border-b border-gray-200">
-      <div className="flex items-center space-x-4">
-        <NavLink to="/" className="flex items-center"><img src="/1-2.png" alt="C&KInsight Logo" className="h-12" /></NavLink>
+    <header className="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-gray-200">
+      {/* 전체폭 가로배치, PC에서는 좌우로 벌리기 */}
+      <div className="  flex items-center justify-between px-3 py-3 md:px-10 md:py-6 w-full">
+        {/* 로고 */}
+        <NavLink to="/" className="flex items-center shrink-0">
+          <img
+            src="/1-2.png"
+            alt="C&KInsight Logo"
+            className="block h-10 w-auto md:h-12 object-contain"
+          />
+        </NavLink>
+
+        {/* 메뉴 */}
+        <nav
+          className="
+            ml-3 flex items-center gap-3
+            text-sm font-semibold
+            overflow-x-auto
+            scrollbar-none
+            min-w-0
+            md:ml-0 md:gap-6 md:text-lg md:overflow-visible
+          "
+        >
+            <NavLink to="/about" className={nav}>About</NavLink>
+            <NavLink to="/services" className={nav}>Services</NavLink>
+            <NavLink to="/cases" className={nav}>Case Studies</NavLink>
+            <NavLink to="/insights" className={nav}>Insights</NavLink>
+            <NavLink to="/contact" className={nav}>Contact</NavLink>
+        </nav>
       </div>
-      <nav className="space-x-6 text-lg font-semibold">
-        <NavLink to="/about" className={nav}>About</NavLink>
-        <NavLink to="/services" className={nav}>Services</NavLink>
-        <NavLink to="/cases" className={nav}>Case Studies</NavLink>
-        <NavLink to="/insights" className={nav}>Insights</NavLink>
-        <NavLink to="/contact" className={nav}>Contact</NavLink>
-      </nav>
     </header>
   );
 }
+
 
 function Footer(){
   return (
@@ -104,53 +128,79 @@ function Home(){
       </section>
 
       {/* Services preview */}
-     <section className="bg-gray-100 py-16 px-6">
-       <div className="max-w-6xl mx-auto">
-       <h2 className="text-3xl font-extrabold text-center ck-brand mb-8 tracking-tight">Our Services</h2>
-       <div className="grid md:grid-cols-2 gap-8">
-      
-      {/* Full-Scope CRO */}
-      <NavLink to="/services/full-scope" className="group bg-white p-8 rounded-2xl shadow hover:shadow-lg transition block">
-        <h3 className="text-2xl font-bold mb-2">Full-Scope CRO</h3>
-        <ul className="list-disc ml-5 text-sm leading-relaxed space-y-1">
-          <li>프로토콜 설계부터 모니터링, 데이터 관리(EDC/DM), 통계·CSR까지</li>
-          <li>임상시험 전 과정 일괄 지원</li>
-        </ul>
-        <span className="mt-4 inline-block ck-brand font-semibold group-hover:underline">자세히 보기 →</span>
-      </NavLink>
-      
-      {/* Partial CRO */}
-      <NavLink to="/services/partial" className="group bg-white p-8 rounded-2xl shadow hover:shadow-lg transition block">
-        <h3 className="text-2xl font-bold mb-2">Partial CRO</h3>
-        <ul className="list-disc ml-5 text-sm leading-relaxed space-y-1">
-          <li>내부 리소스·예산 상황에 맞춘 맞춤형 모듈형 서비스</li>
-          <li>Protocol/SAP, 모니터링, 통계·CSR 등 필요 기능별 수행 지원</li>
-        </ul>
-        <span className="mt-4 inline-block ck-brand font-semibold group-hover:underline">자세히 보기 →</span>
-      </NavLink>
-      
-      {/* Regulatory Consulting */}
-      <NavLink to="/services/regulatory" className="group bg-white p-8 rounded-2xl shadow hover:shadow-lg transition block">
-        <h3 className="text-2xl font-bold mb-2">Regulatory Consulting</h3>
-        <ul className="list-disc ml-5 text-sm leading-relaxed space-y-1">
-          <li>국내 허가(MFDS) 전략·심사 대응 중심</li>
-          <li>FDA·CE 준비 기업에는 설계·문서화 가이드 제공</li>
-        </ul>
-        <span className="mt-4 inline-block ck-brand font-semibold group-hover:underline">자세히 보기 →</span>
-      </NavLink>
-      
-      {/* Special Expertise */}
-      <NavLink to="/services/expertise" className="group bg-white p-8 rounded-2xl shadow hover:shadow-lg transition block">
-        <h3 className="text-2xl font-bold mb-2">Special Expertise</h3>
-        <ul className="list-disc ml-5 text-sm leading-relaxed space-y-1">
-          <li>DTx, AI-SaMD, IVD 등 최신 분야 특화 경험</li>
-          <li>새로운 규제 환경에 맞춘 전략·임상 설계 지원</li>
-        </ul>
-        <span className="mt-4 inline-block ck-brand font-semibold group-hover:underline">자세히 보기 →</span>
-      </NavLink>
+      <section className="bg-gray-100 py-16 px-6">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-extrabold text-center ck-brand mb-8 tracking-tight">
+            Our Services
+          </h2>
+
+          <div className="grid md:grid-cols-2 gap-8 items-stretch">
+
+            {/* Full-Scope CRO */}
+            <NavLink
+              to="/services/full-scope"
+              className="group bg-white p-8 rounded-2xl shadow hover:shadow-lg transition flex flex-col h-full min-h-[100px]"
+            >
+              <h3 className="text-2xl font-bold mb-2">Full-Scope CRO</h3>
+              <ul className="list-disc ml-5 text-sm leading-relaxed space-y-1 flex-1">
+                <li>프로토콜 설계부터 모니터링, 데이터 관리(EDC/DM), 통계·CSR까지</li>
+                <li>임상시험 전 과정 일괄 지원</li>
+              </ul>
+              <span className="mt-4 inline-block ck-brand font-semibold group-hover:underline">
+                자세히 보기 →
+              </span>
+            </NavLink>
+
+            {/* Partial CRO */}
+            <NavLink
+              to="/services/partial"
+              className="group bg-white p-8 rounded-2xl shadow hover:shadow-lg transition flex flex-col h-full min-h-[100px]"
+            >
+              <h3 className="text-2xl font-bold mb-2">Partial CRO</h3>
+              <ul className="list-disc ml-5 text-sm leading-relaxed space-y-1 flex-1">
+                <li>내부 리소스·예산 상황에 맞춘 맞춤형 모듈형 서비스</li>
+                <li>Protocol/SAP, 모니터링, 통계·CSR 등 필요 기능별 수행 지원</li>
+              </ul>
+              <span className="mt-4 inline-block ck-brand font-semibold group-hover:underline">
+                자세히 보기 →
+              </span>
+            </NavLink>
+
+            {/* Regulatory Consulting */}
+            <NavLink
+              to="/services/regulatory"
+              className="group bg-white p-8 rounded-2xl shadow hover:shadow-lg transition flex flex-col h-full min-h-[100px]"
+            >
+              <h3 className="text-2xl font-bold mb-2">Regulatory Consulting</h3>
+              <ul className="list-disc ml-5 text-sm leading-relaxed space-y-1 flex-1">
+                <li>국내 허가(MFDS) 전략·심사 대응 중심</li>
+                <li>FDA·CE 준비 기업에는 설계·문서화 가이드 제공</li>
+              </ul>
+              <span className="mt-4 inline-block ck-brand font-semibold group-hover:underline">
+                자세히 보기 →
+              </span>
+            </NavLink>
+
+            {/* Special Expertise */}
+            <NavLink
+              to="/services/expertise"
+              className="group bg-white p-8 rounded-2xl shadow hover:shadow-lg transition flex flex-col h-full min-h-[100px]"
+            >
+              <h3 className="text-2xl font-bold mb-2">Special Expertise</h3>
+              <ul className="list-disc ml-5 text-sm leading-relaxed space-y-1 flex-1">
+                <li>DTx, AI-SaMD, IVD 등 최신 분야 특화 경험</li>
+                <li>새로운 규제 환경에 맞춘 전략·임상 설계 지원</li>
+              </ul>
+              <span className="mt-4 inline-block ck-brand font-semibold group-hover:underline">
+                자세히 보기 →
+              </span>
+            </NavLink>
+
           </div>
         </div>
       </section>
+
+
 
       {/* Case Studies preview */}
       <section className="py-16 px-6 max-w-6xl mx-auto">
@@ -417,49 +467,72 @@ function ServicesPage(){
       <p className="mb-8">필요한 범위만 선택하는 <strong>Partial</strong>부터, 전 과정을 맡기는 <strong>Full-Scope</strong>까지
         C&KInsight는 임상·허가 전주기를 Insight로 설계합니다.<br/> 아래 항목에서 세부 내용을 확인하세요.</p>
 
-      {/* 카드 목록 */}
-      <div className="grid md:grid-cols-2 gap-8 mb-10">
+      {/* ---- 카드 목록 ---- */}
+       <div className="grid md:grid-cols-2 gap-8 mb-10">
         {/* Full-Scope CRO */}
-        <NavLink to="/services/full-scope" className="group block bg-gray-50 hover:bg-white p-6 rounded-2xl border shadow-sm hover:shadow transition">
+        <NavLink
+          to="/services/full-scope"
+          className="group bg-gray-50 hover:bg-white p-6 rounded-2xl border shadow-sm hover:shadow transition
+                     flex flex-col h-full min-h-[190px]"
+        >
           <h3 className="text-2xl font-bold mb-2">Full-Scope CRO</h3>
-          <p className="text-sm mb-3 tracking-tighter text-left">
+          <p className="text-sm mb-3 tracking-tighter text-left flex-1">
             프로토콜 → 모니터링 → 데이터 관리(EDC/DM) → 통계·CSR까지
             임상시험 전 과정을 일관성 있게 수행합니다.
           </p>
-
-          <span className="ck-brand font-semibold group-hover:underline">자세히 보기 →</span>
+          <span className="ck-brand font-semibold group-hover:underline mt-auto">
+            자세히 보기 →
+          </span>
         </NavLink>
-        
+
         {/* Partial CRO */}
-        <NavLink to="/services/partial" className="group block bg-gray-50 hover:bg-white p-6 rounded-2xl border shadow-sm hover:shadow transition">
+        <NavLink
+          to="/services/partial"
+          className="group bg-gray-50 hover:bg-white p-6 rounded-2xl border shadow-sm hover:shadow transition
+                     flex flex-col h-full min-h-[190px]"
+        >
           <h3 className="text-2xl font-bold mb-2">Partial CRO (Flexible)</h3>
-          <p className="text-sm mb-3 tracking-tighter text-left">
+          <p className="text-sm mb-3 tracking-tighter text-left flex-1">
             필요한 구간만 선택: Protocol/SAP, 모니터링, 통계·CSR,
             출판용 임상시험 등 모듈형 지원
           </p>
-          <span className="ck-brand font-semibold group-hover:underline">자세히 보기 →</span>
+          <span className="ck-brand font-semibold group-hover:underline mt-auto">
+            자세히 보기 →
+          </span>
         </NavLink>
-        
+
         {/* Regulatory Consulting */}
-        <NavLink to="/services/regulatory" className="group block bg-gray-50 hover:bg-white p-6 rounded-2xl border shadow-sm hover:shadow transition">
+        <NavLink
+          to="/services/regulatory"
+          className="group bg-gray-50 hover:bg-white p-6 rounded-2xl border shadow-sm hover:shadow transition
+                     flex flex-col h-full min-h-[190px]"
+        >
           <h3 className="text-2xl font-bold mb-2">Regulatory Consulting</h3>
-          <p className="text-sm mb-3 tracking-tighter text-left">
-            국내 허가(MFDS) 전략·심사 대응 중심, 
-            FDA·CE 인증 준비 기업에는 설계·문서화 가이드 제공
+          <p className="text-sm mb-3 tracking-tighter text-left flex-1">
+            국내 허가(MFDS) 전략·심사 대응 중심, FDA·CE 인증 준비 기업에는 설계·문서화 가이드 제공
           </p>
-          <span className="ck-brand font-semibold group-hover:underline">자세히 보기 →</span>
+          <span className="ck-brand font-semibold group-hover:underline mt-auto">
+            자세히 보기 →
+          </span>
         </NavLink>
-        
+
         {/* Special Expertise */}
-        <NavLink to="/services/expertise" className="group block bg-gray-50 hover:bg-white p-6 rounded-2xl border shadow-sm hover:shadow transition">
+        <NavLink
+          to="/services/expertise"
+          className="group bg-gray-50 hover:bg-white p-6 rounded-2xl border shadow-sm hover:shadow transition
+                     flex flex-col h-full min-h-[190px]"
+        >
           <h3 className="text-2xl font-bold mb-2">Special Expertise</h3>
-          <p className="text-sm mb-3 tracking-tighter text-left">
-            DTx, AI-SaMD, IVD 등 최신 의료기기 분야 경험 
+          <p className="text-sm mb-3 tracking-tighter text-left flex-1">
+            DTx, AI-SaMD, IVD 등 최신 의료기기 분야 경험
             새로운 개발 전략과 임상 설계 지원
           </p>
-          <span className="ck-brand font-semibold group-hover:underline">자세히 보기 →</span>
+          <span className="ck-brand font-semibold group-hover:underline mt-auto">
+            자세히 보기 →
+          </span>
         </NavLink>
       </div>
+
 
       {/* Full vs Partial 비교표 */}
       <div className="overflow-x-auto mb-10">
