@@ -134,18 +134,19 @@ function Home(){
             Our Services
           </h2>
 
-          <div className="grid md:grid-cols-2 gap-8 items-stretch">
-
+          <div className="grid gap-8 md:grid-cols-2 items-stretch">
             {/* Full-Scope CRO */}
             <NavLink
               to="/services/full-scope"
-              className="group bg-white p-8 rounded-2xl shadow hover:shadow-lg transition flex flex-col h-full min-h-[100px]"
+              className="group bg-white p-8 rounded-2xl shadow hover:shadow-lg transition flex flex-col min-h-[25vh] sm:min-h-[210px]"
             >
-              <h3 className="text-2xl font-bold mb-2">Full-Scope CRO</h3>
-              <ul className="list-disc ml-5 text-sm leading-relaxed space-y-1 flex-1">
-                <li>프로토콜 설계부터 모니터링, 데이터 관리(EDC/DM), 통계·CSR까지</li>
-                <li>임상시험 전 과정 일괄 지원</li>
-              </ul>
+              <div className="flex-1">
+                <h3 className="text-2xl font-bold mb-2">Full-Scope CRO</h3>
+                <ul className="list-disc ml-5 text-sm leading-relaxed space-y-1">
+                  <li>프로토콜 설계부터 모니터링, 데이터 관리(EDC/DM), 통계·CSR까지</li>
+                  <li>임상시험 전 과정 일괄 지원</li>
+                </ul>
+              </div>
               <span className="mt-4 inline-block ck-brand font-semibold group-hover:underline">
                 자세히 보기 →
               </span>
@@ -154,13 +155,15 @@ function Home(){
             {/* Partial CRO */}
             <NavLink
               to="/services/partial"
-              className="group bg-white p-8 rounded-2xl shadow hover:shadow-lg transition flex flex-col h-full min-h-[100px]"
+              className="group bg-white p-8 rounded-2xl shadow hover:shadow-lg transition flex flex-col min-h-[25vh] sm:min-h-[210px]"
             >
-              <h3 className="text-2xl font-bold mb-2">Partial CRO</h3>
-              <ul className="list-disc ml-5 text-sm leading-relaxed space-y-1 flex-1">
-                <li>내부 리소스·예산 상황에 맞춘 맞춤형 모듈형 서비스</li>
-                <li>Protocol/SAP, 모니터링, 통계·CSR 등 필요 기능별 수행 지원</li>
-              </ul>
+              <div className="flex-1">
+                <h3 className="text-2xl font-bold mb-2">Partial CRO</h3>
+                <ul className="list-disc ml-5 text-sm leading-relaxed space-y-1">
+                  <li>내부 리소스·예산 상황에 맞춘 맞춤형 모듈형 서비스</li>
+                  <li>Protocol/SAP, 모니터링, 통계·CSR 등 필요 기능별 수행 지원</li>
+                </ul>
+              </div>
               <span className="mt-4 inline-block ck-brand font-semibold group-hover:underline">
                 자세히 보기 →
               </span>
@@ -169,13 +172,15 @@ function Home(){
             {/* Regulatory Consulting */}
             <NavLink
               to="/services/regulatory"
-              className="group bg-white p-8 rounded-2xl shadow hover:shadow-lg transition flex flex-col h-full min-h-[100px]"
+              className="group bg-white p-8 rounded-2xl shadow hover:shadow-lg transition flex flex-col min-h-[25vh] sm:min-h-[210px]"
             >
-              <h3 className="text-2xl font-bold mb-2">Regulatory Consulting</h3>
-              <ul className="list-disc ml-5 text-sm leading-relaxed space-y-1 flex-1">
-                <li>국내 허가(MFDS) 전략·심사 대응 중심</li>
-                <li>FDA·CE 준비 기업에는 설계·문서화 가이드 제공</li>
-              </ul>
+              <div className="flex-1">
+                <h3 className="text-2xl font-bold mb-2">Regulatory Consulting</h3>
+                <ul className="list-disc ml-5 text-sm leading-relaxed space-y-1">
+                  <li>국내 허가(MFDS) 전략·심사 대응 중심</li>
+                  <li>FDA·CE 준비 기업에는 설계·문서화 가이드 제공</li>
+                </ul>
+              </div>
               <span className="mt-4 inline-block ck-brand font-semibold group-hover:underline">
                 자세히 보기 →
               </span>
@@ -184,22 +189,22 @@ function Home(){
             {/* Special Expertise */}
             <NavLink
               to="/services/expertise"
-              className="group bg-white p-8 rounded-2xl shadow hover:shadow-lg transition flex flex-col h-full min-h-[100px]"
+              className="group bg-white p-8 rounded-2xl shadow hover:shadow-lg transition flex flex-col min-h-[25vh] sm:min-h-[210px]"
             >
-              <h3 className="text-2xl font-bold mb-2">Special Expertise</h3>
-              <ul className="list-disc ml-5 text-sm leading-relaxed space-y-1 flex-1">
-                <li>DTx, AI-SaMD, IVD 등 최신 분야 특화 경험</li>
-                <li>새로운 규제 환경에 맞춘 전략·임상 설계 지원</li>
-              </ul>
+              <div className="flex-1">
+                <h3 className="text-2xl font-bold mb-2">Special Expertise</h3>
+                <ul className="list-disc ml-5 text-sm leading-relaxed space-y-1">
+                  <li>DTx, AI-SaMD, IVD 등 최신 분야 특화 경험</li>
+                  <li>새로운 규제 환경에 맞춘 전략·임상 설계 지원</li>
+                </ul>
+              </div>
               <span className="mt-4 inline-block ck-brand font-semibold group-hover:underline">
                 자세히 보기 →
               </span>
             </NavLink>
-
           </div>
         </div>
       </section>
-
 
 
       {/* Case Studies preview */}
@@ -258,67 +263,76 @@ function Home(){
         </div>
       </section>
 
-      {/* Insights preview (텍스트만, 짧은 한 줄 설명) */}
+
+      {/* Insights preview */}
+      {/* Insights preview */}
       <section className="bg-gray-100 py-16 px-6">
-      <div className="max-w-6xl mx-auto">
-      {/* ✅ Insights 전체로 이동할 수 있도록 타이틀에 NavLink 추가 */}
-      <NavLink to="/insights" className="block text-center group">
-      <h2 className="text-3xl font-extrabold ck-brand mb-2 tracking-tight group-hover:text-[#D08700] transition-colors">
-      Insights
-      </h2>
-      <p className="text-gray-600 text-sm mb-8">
-      규제·임상·통계에 대한 C&KInsight의 관점을 공유합니다. 클릭하면 전체 개요 페이지로 이동합니다.
-      </p>
-      </NavLink>
+        <div className="max-w-6xl mx-auto">
+          <NavLink to="/insights" className="block text-center group">
+            <h2 className="text-3xl font-extrabold ck-brand mb-2 tracking-tight group-hover:text-[#D08700] transition-colors">
+              Insights
+            </h2>
+            <p className="text-gray-600 text-sm mb-8">
+              규제·임상·통계에 대한 C&KInsight의 관점을 공유합니다. 클릭하면 전체 개요 페이지로 이동합니다.
+            </p>
+          </NavLink>
 
+          <div className="grid md:grid-cols-4 gap-6">
+            {/* 1 */}
+            <NavLink
+              to="/insights/samplesize"
+              className="group bg-white p-5 md:p-6 rounded-xl border shadow-sm hover:shadow-md transition flex flex-col gap-2 md:gap-3"
+            >
+              <h3 className="text-xl font-bold leading-snug mb-0 lg:min-h-[75px]">
+                {isMobileUA ? "Design" : "Sample Size Determination Journey"}
+              </h3>
+              <p className="text-sm text-gray-600 leading-snug">
+                Clinical success → right ‘n’ by rigorous stats
+              </p>
+            </NavLink>
 
-      <div className="grid md:grid-cols-4 gap-6">
-      <NavLink
-      to="/insights/samplesize"
-      className="group bg-white p-6 rounded-xl border shadow-sm hover:shadow-md transition block"
-      >
-      <h3 className="text-xl font-bold mb-2  min-h-[72px] leading-snug">
-              {isMobileUA ? "Design" : "Sample Size Determination Journey"}
-      </h3>
-      <p className="text-sm text-gray-600">Clinical success → right ‘n’ by rigorous stats</p>
-      </NavLink>
+            {/* 2 */}
+            <NavLink
+              to="/insights/ai-samd"
+              className="group bg-white p-5 md:p-6 rounded-xl border shadow-sm hover:shadow-md transition flex flex-col gap-2 md:gap-3"
+            >
+              <h3 className="text-xl font-bold leading-snug mb-0 lg:min-h-[75px]">
+                {isMobileUA ? "AI-SaMD" : "AI-SaMD: From Purpose to Endpoints"}
+              </h3>
+              <p className="text-sm text-gray-600 leading-snug">
+                Align endpoints with purpose; bridge to approval
+              </p>
+            </NavLink>
 
+            {/* 3 */}
+            <NavLink
+              to="/insights/dtx"
+              className="group bg-white p-5 md:p-6 rounded-xl border shadow-sm hover:shadow-md transition flex flex-col gap-2 md:gap-3"
+            >
+              <h3 className="text-xl font-bold leading-snug mb-0 lg:min-h-[75px]">
+                {isMobileUA ? "Dtx" : "DTx in the Clinical Ecosystem"}
+              </h3>
+              <p className="text-sm text-gray-600 leading-snug">
+                CBT, adherence, lifestyle—care beyond hospitals
+              </p>
+            </NavLink>
 
-      <NavLink
-      to="/insights/ai-samd"
-      className="group bg-white p-6 rounded-xl border shadow-sm hover:shadow-md transition block"
-      >
-      <h3 className="text-xl font-bold mb-2 min-h-[72px] leading-snug">
-              {isMobileUA ? "AI-SaMD" : "AI-SaMD: From Purpose to Endpoints"}
-      </h3>
-      <p className="text-sm text-gray-600">Align endpoints with purpose; bridge to approval</p>
-      </NavLink>
-
-
-      <NavLink
-      to="/insights/dtx"
-      className="group bg-white p-6 rounded-xl border shadow-sm hover:shadow-md transition block"
-      >
-      <h3 className="text-xl font-bold mb-2 min-h-[72px] leading-snug">
-              {isMobileUA ? "Dtx" : "DTx in the Clinical Ecosystem"}
-      </h3>
-      <p className="text-sm text-gray-600">CBT, adherence, lifestyle—care beyond hospitals</p>
-      </NavLink>
-
-
-      {/* Biomarkers → IVD 로 경로 변경 */}
-      <NavLink
-      to="/insights/ivd"
-      className="group bg-white p-6 rounded-xl border shadow-sm hover:shadow-md transition block"
-      >
-      <h3 className="text-xl font-bold mb-2 min-h-[72px] leading-snug">
-              {isMobileUA ? "IVD" : "Biomarkers & Longitudinal Evidence"}
-      </h3>
-      <p className="text-sm text-gray-600">Track over time to confirm clinical value</p>
-      </NavLink>
-      </div>
-      </div>
+            {/* 4 */}
+            <NavLink
+              to="/insights/ivd"
+              className="group bg-white p-5 md:p-6 rounded-xl border shadow-sm hover:shadow-md transition flex flex-col gap-2 md:gap-3"
+            >
+              <h3 className="text-xl font-bold leading-snug mb-0 lg:min-h-[75px]">
+                {isMobileUA ? "IVD" : "Biomarkers & Longitudinal Evidence"}
+              </h3>
+              <p className="text-sm text-gray-600 leading-snug">
+                Track over time to confirm clinical value
+              </p>
+            </NavLink>
+          </div>
+        </div>
       </section>
+
 
       {/* Contact CTA */}
       <section className="py-16 px-6 max-w-4xl mx-auto text-center">
@@ -724,97 +738,159 @@ function ExpertisePage(){
 }
 
 // ---- Cases Overview ----
-function CasesPage(){
+// ---- Cases Overview ----
+function CasesPage() {
   const isMobileUA = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-  
+
   return (
-    <PageLayout title="Case Studies" breadcrumb={<NavLink to="/" className="hover:underline">Home</NavLink>}>
-      <p className="mb-8">실제 수행한 프로젝트 사례를 통해 C&KInsight의 실행력을 확인하세요. 카드를 눌러 상세로 이동합니다.</p>
-      <div className="grid md:grid-cols-3 gap-6 items-stretch">
-      {/* DTx */}
-      <NavLink to="/cases/dtx" 
-        className="group bg-white p-6 rounded-xl border shadow-sm hover:shadow transition flex flex-col h-full">
-        <div className="flex-grow">
-           <h3 className="text-xl font-bold mb-2 min-h-[56px]">
-             {isMobileUA ? "DTx" : "Digital Therapeutics (DTx)"}</h3>
-          <p className="text-sm mb-4">
-            {isMobileUA
-             ? "항암·천식·비염 등 MFDS 승인"
-             : <>항암, 천식, 알레르기 비염 등<br/> | MFDS 임상 승인</>}
-          </p>
-        </div>
-        <span className="ck-brand font-semibold group-hover:underline mt-auto">사례 보기 →</span>
-      </NavLink>
+    <PageLayout
+      title="Case Studies"
+      breadcrumb={<NavLink to="/" className="hover:underline">Home</NavLink>}
+    >
+      <p className="mb-8 text-gray-700">
+        실제 수행한 프로젝트 사례를 통해 C&amp;KInsight의 실행력을 확인하세요. 카드를 눌러 상세로 이동합니다.
+      </p>
 
-      {/* AI-SaMD */}
-      <NavLink to="/cases/ai-samd" 
-        className="group bg-white p-6 rounded-xl border shadow-sm hover:shadow transition flex flex-col h-full">
-        <div className="flex-grow">
-          <h3 className="text-xl font-bold mb-2 min-h-[56px]">
-            {isMobileUA ? "AI-SaMD" : "AI-SaMD / Diagnostic AI"}
-          </h3>
-          <p className="text-sm mb-4">
-            {isMobileUA
-              ? "호흡기·희귀·갑상선암 등 MFDS·FDA 승인"
-              : <>호흡기, 희귀, 갑상선암 등<br />| MFDS 허가, FDA 승인</>}
-          </p>
-        </div>
-        <span className="ck-brand font-semibold group-hover:underline mt-auto">사례 보기 →</span>
-      </NavLink>
+      <div className="grid md:grid-cols-3 gap-4 md:gap-6 items-start">
+        {/* DTx */}
+        <NavLink
+          to="/cases/dtx"
+          className="group bg-white p-3 md:p-6 rounded-xl border shadow-sm hover:shadow transition
+                     block md:flex md:flex-col md:h-full"
+        >
+          <div className="mb-2 md:mb-4">
+            {/* PC에서만 제목 높이 통일 */}
+            <div className="md:min-h-[60px]">
+              <h3 className="text-base md:text-xl font-bold leading-snug">
+                {isMobileUA ? "DTx" : "Digital Therapeutics (DTx)"}
+              </h3>
+            </div>
+            {isMobileUA ? (
+              <p className="text-sm leading-snug">항암·천식·비염 등 MFDS 승인</p>
+            ) : (
+              <p className="text-sm leading-snug">
+                <span className="block">항암, 천식, 알레르기 비염 등</span>
+                <span className="block">| MFDS 임상 승인</span>
+              </p>
+            )}
+          </div>
+          <span className="ck-brand font-semibold group-hover:underline text-sm md:text-base md:mt-auto">
+            사례 보기 →
+          </span>
+        </NavLink>
 
-      {/* IVD (Qualitative) */}
-      <NavLink to="/cases/ivd-qual" 
-        className="group bg-white p-6 rounded-xl border shadow-sm hover:shadow transition flex flex-col h-full">
-        <div className="flex-grow">
-              <h3 className="text-xl font-bold mb-2 min-h-[56px]">
+        {/* AI-SaMD */}
+        <NavLink
+          to="/cases/ai-samd"
+          className="group bg-white p-3 md:p-6 rounded-xl border shadow-sm hover:shadow transition
+                     block md:flex md:flex-col md:h-full"
+        >
+          <div className="mb-2 md:mb-4">
+            <div className="md:min-h-[60px]">
+              <h3 className="text-base md:text-xl font-bold leading-snug">
+                {isMobileUA ? "AI-SaMD" : "AI-SaMD / Diagnostic AI"}
+              </h3>
+            </div>
+            {isMobileUA ? (
+              <p className="text-sm leading-snug">
+                호흡기·희귀·갑상선암 등 MFDS·FDA 승인
+              </p>
+            ) : (
+              <p className="text-sm leading-snug">
+                <span className="block">호흡기, 희귀, 갑상선암 등</span>
+                <span className="block">| MFDS 허가, FDA 승인</span>
+              </p>
+            )}
+          </div>
+          <span className="ck-brand font-semibold group-hover:underline text-sm md:text-base md:mt-auto">
+            사례 보기 →
+          </span>
+        </NavLink>
+
+        {/* IVD (Qual) */}
+        <NavLink
+          to="/cases/ivd-qual"
+          className="group bg-white p-3 md:p-6 rounded-xl border shadow-sm hover:shadow transition
+                     block md:flex md:flex-col md:h-full"
+        >
+          <div className="mb-2 md:mb-4">
+            <div className="md:min-h-[60px]">
+              <h3 className="text-base md:text-xl font-bold leading-snug">
                 {isMobileUA ? "IVD(Qual)" : "IVD (Qualitative)"}
               </h3>
-              <p className="text-sm mb-4">
-                {isMobileUA
-                  ? "STD·RV·Sepsis 등 MFDS 허가"
-                  : <>STD, RV, Sepsis 등<br />| MFDS 허가</>}
+            </div>
+            {isMobileUA ? (
+              <p className="text-sm leading-snug">STD·RV·Sepsis 등 MFDS 허가</p>
+            ) : (
+              <p className="text-sm leading-snug">
+                <span className="block">STD, RV, Sepsis 등</span>
+                <span className="block">| MFDS 허가</span>
               </p>
-        </div>
-        <span className="ck-brand font-semibold group-hover:underline mt-auto">사례 보기 →</span>
-      </NavLink>
+            )}
+          </div>
+          <span className="ck-brand font-semibold group-hover:underline text-sm md:text-base md:mt-auto">
+            사례 보기 →
+          </span>
+        </NavLink>
 
-      {/* IVD (Quantitative) */}
-      <NavLink to="/cases/ivd-quant" 
-        className="group bg-white p-6 rounded-xl border shadow-sm hover:shadow transition flex flex-col h-full">
-        <div className="flex-grow">
-          <h3 className="text-xl font-bold mb-2 min-h-[56px]">
-            {isMobileUA ? "IVD(Quant)" : "IVD (Quantitative)"}
-          </h3>
-          <p className="text-sm mb-4">
-            {isMobileUA
-              ? "CMV·CK-MB·NT-proBNP 등 MFDS 허가"
-              : <>CMV, CK-MB, NT-proBNP 등<br />| MFDS 허가</>}
-          </p>
-        </div>
-        <span className="ck-brand font-semibold group-hover:underline mt-auto">사례 보기 →</span>
-      </NavLink>
+        {/* IVD (Quant) */}
+        <NavLink
+          to="/cases/ivd-quant"
+          className="group bg-white p-3 md:p-6 rounded-xl border shadow-sm hover:shadow transition
+                     block md:flex md:flex-col md:h-full"
+        >
+          <div className="mb-2 md:mb-4">
+            <div className="md:min-h-[60px]">
+              <h3 className="text-base md:text-xl font-bold leading-snug">
+                {isMobileUA ? "IVD(Quant)" : "IVD (Quantitative)"}
+              </h3>
+            </div>
+            {isMobileUA ? (
+              <p className="text-sm leading-snug">
+                CMV·CK-MB·NT-proBNP 등 MFDS 허가
+              </p>
+            ) : (
+              <p className="text-sm leading-snug">
+                <span className="block">CMV, CK-MB, NT-proBNP 등</span>
+                <span className="block">| MFDS 허가</span>
+              </p>
+            )}
+          </div>
+          <span className="ck-brand font-semibold group-hover:underline text-sm md:text-base md:mt-auto">
+            사례 보기 →
+          </span>
+        </NavLink>
 
-      {/* Medical Supplies */}
-      <NavLink to="/cases/med-supplies" 
-        className="group bg-white p-6 rounded-xl border shadow-sm hover:shadow transition flex flex-col h-full">
-        <div className="flex-grow">
-          <h3 className="text-xl font-bold mb-2 min-h-[56px]">
-            {isMobileUA ? "Med Supplies" : "Medical Supplies / Accessories"}
-          </h3>
-          <p className="text-sm mb-4">
-            {isMobileUA
-              ? "혈압 관리 등 MFDS 승인"
-              : <>혈압 관리 등<br />| MFDS 임상 승인</>}
-          </p>
-        </div>
-        <span className="ck-brand font-semibold group-hover:underline mt-auto">사례 보기 →</span>
-      </NavLink>
-    </div>
-
-
+        {/* Medical Supplies */}
+        <NavLink
+          to="/cases/med-supplies"
+          className="group bg-white p-3 md:p-6 rounded-xl border shadow-sm hover:shadow transition
+                     block md:flex md:flex-col md:h-full"
+        >
+          <div className="mb-2 md:mb-4">
+            <div className="md:min-h-[60px]">
+              <h3 className="text-base md:text-xl font-bold leading-snug">
+                {isMobileUA ? "Med Supplies" : "Medical Supplies / Accessories"}
+              </h3>
+            </div>
+            {isMobileUA ? (
+              <p className="text-sm leading-snug">혈압 관리 등 MFDS 승인</p>
+            ) : (
+              <p className="text-sm leading-snug">
+                <span className="block">혈압 관리 등</span>
+                <span className="block">| MFDS 임상 승인</span>
+              </p>
+            )}
+          </div>
+          <span className="ck-brand font-semibold group-hover:underline text-sm md:text-base md:mt-auto">
+            사례 보기 →
+          </span>
+        </NavLink>
+      </div>
     </PageLayout>
   );
 }
+
 
 // ---- Insights Overview ----
 function InsightsPage() {
@@ -823,24 +899,27 @@ function InsightsPage() {
   );
   // 재사용 카드
   const InsightCard = ({ to, title, desc }) => (
-    <NavLink
-      to={to}
-      className="group bg-white p-6 rounded-xl border shadow-sm hover:shadow-md transition block h-full"
-    >
-      <div className="h-full flex flex-col">
-        {/* ✅ 제목 높이 고정 */}
-        <h3 className="text-lg font-bold mb-2 leading-snug min-h-[72px]">
-          {title}
-        </h3>
-        <p className="text-sm text-gray-600 clamp-2 flex-1">{desc}</p>
-        <div className="mt-4 flex justify-end">
-          <span className="ck-brand text-sm font-semibold group-hover:underline">
-            내용보기 →
-          </span>
-        </div>
+  <NavLink
+    to={to}
+    className="group bg-white p-6 rounded-xl border shadow-sm hover:shadow-md transition block h-full"
+  >
+    <div className="h-full flex flex-col">
+      {/* ✅ 모바일에서만 타이틀-설명 간격 줄임 */}
+      <h3 className="text-lg font-bold mb-1 md:mb-2 leading-snug min-h-[48px] md:min-h-[72px]">
+        {title}
+      </h3>
+
+      <p className="text-sm text-gray-600 clamp-2 flex-1">{desc}</p>
+
+      <div className="mt-4 flex justify-end">
+        <span className="ck-brand text-sm font-semibold group-hover:underline">
+          내용보기 →
+        </span>
       </div>
-    </NavLink>
-  );
+    </div>
+  </NavLink>
+);
+
 
   return (
     <PageLayout
