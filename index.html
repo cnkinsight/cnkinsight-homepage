@@ -54,7 +54,7 @@
       content="https://www.cnkinsight.com/og-ckinsight_brown.png"
     />
 
-    <!-- ✅ 구조화 데이터 (Organization Schema) -->
+    <!-- ✅ 1) Organization -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -75,7 +75,7 @@
       }
     </script>
 
-    <!-- ✅ 추가된 WebSite Schema -->
+    <!-- ✅ 2) WebSite + SearchAction -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -84,9 +84,55 @@
         "url": "https://www.cnkinsight.com/",
         "potentialAction": {
           "@type": "SearchAction",
-          "target": "https://www.google.com/search?q=site:cnkinsight.com+{search_term_string}",
+          "target": "https://www.cnkinsight.com/?s={search_term_string}",
           "query-input": "required name=search_term_string"
         }
+      }
+    </script>
+
+    <!-- ✅ 3) BreadcrumbList -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.cnkinsight.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "About",
+            "item": "https://www.cnkinsight.com/#/about"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Services",
+            "item": "https://www.cnkinsight.com/#/services"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Case Studies",
+            "item": "https://www.cnkinsight.com/#/cases"
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "name": "Insights",
+            "item": "https://www.cnkinsight.com/#/insights"
+          },
+          {
+            "@type": "ListItem",
+            "position": 6,
+            "name": "Contact",
+            "item": "https://www.cnkinsight.com/#/contact"
+          }
+        ]
       }
     </script>
 
