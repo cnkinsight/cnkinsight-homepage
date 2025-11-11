@@ -109,7 +109,8 @@ function Home(){
   return (
     <main>
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-yellow-400 to-yellow-600 text-white text-center py-28 px-6">
+      <section className="relative bg-gradient-to-r from-yellow-400 to-yellow-600 text-white text-center py-28 px-6"
+              data-nosnippet>
         <h1 className="text-6xl font-extrabold tracking-tight mb-6">From Concept to Clearance,<br />We Deliver Insight</h1>
         <p className="text-2xl font-semibold mb-8 max-w-2xl mx-auto leading-relaxed">
           C&KInsight는 의료기기 개발의 시작부터 허가까지, <br />Insight로 전략을 제시하는 파트너입니다.
@@ -335,7 +336,9 @@ function Home(){
 
 
       {/* Contact CTA */}
-      <section className="py-16 px-6 max-w-4xl mx-auto text-center">
+      <section className="py-16 px-6 max-w-4xl mx-auto text-center"
+               data-nosnippet
+      >
         <h2 className="text-3xl font-extrabold mb-4 ck-brand tracking-tight">Start with Insight</h2>
         <p className="mb-6">귀사의 의료기기 임상 및 허가 전략, 지금 바로 상담해보세요.</p>
         <button onClick={()=>navigate('/contact')} className="px-8 py-4 bg-yellow-500 text-white font-bold rounded-full shadow hover:bg-yellow-600 transition">상담 신청하기</button>
