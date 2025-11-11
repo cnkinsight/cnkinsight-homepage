@@ -4,48 +4,78 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/MTY_C_b_round2_512.png" />
 
+    <!-- 페이지 제목 -->
+    <title>C&KInsight | 씨앤케이인사이트</title>
+
+    <!-- ✅ 기본 SEO -->
+    <meta
+      name="description"
+      content="C&KInsight(씨앤케이인사이트)는 체외진단의료기기(IVD), 디지털치료기기(DTx), AI 의료기기(AI-SaMD), 일반 의료기기 등 다양한 제품의 목적과 특성에 맞춘 임상시험 설계·통계·인허가(MFDS·IVDR) 전략을 통합적으로 지원하는 전문 CRO·컨설팅 기관입니다. From Concept to Clearance, We Deliver Insight."
+    />
+    <meta
+      name="keywords"
+      content="C&KInsight, 씨앤케이인사이트, 체외진단, 체외진단의료기기, IVD, 디지털치료기기, DTx, AI-SaMD, AI 의료기기, AI 기반 진단기기, AI 헬스케어, 소프트웨어의료기기, 의료기기 임상시험, 통계 컨설팅, 인허가, 인허가 컨설팅, 임허가 임상컨설팅, MFDS, IVDR, 의료기기 CRO, CRO"
+    />
+    <link rel="canonical" href="https://www.cnkinsight.com/" />
+
     <!-- 반응형 -->
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"
     />
-
-    <!-- 라이트 모드 고정 -->
     <meta name="color-scheme" content="light" />
     <meta name="theme-color" content="#ffffff" />
 
-    <!-- ✅ 여기부터 카톡/오픈그래프 썸네일 -->
+    <!-- ✅ 오픈그래프 (카톡/페북 미리보기) -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="C&KInsight" />
-    <meta property="og:title" content="C&KInsight" />
+    <meta property="og:title" content="C&KInsight | 씨앤케이인사이트" />
     <meta
       property="og:description"
       content="From Concept to Clearance, We Deliver Insight"
     />
-    <meta
-      property="og:url"
-      content="https://cnkinsight-homepage.vercel.app/"
-    />
-    <!-- 이미지 경로: public/og-ckinsight_brown.png 를 쓴다는 가정 + 캐시깨기용 v=2 -->
+    <meta property="og:url" content="https://www.cnkinsight.com/" />
     <meta
       property="og:image"
-      content="https://cnkinsight-homepage.vercel.app/og-ckinsight_brown.png"
+      content="https://www.cnkinsight.com/og-ckinsight_brown.png"
     />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
 
-    <!-- 트위터 카드(카톡은 og만 봐도 되지만 넣어두면 좋음) -->
+    <!-- ✅ 트위터 카드 -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="C&KInsight" />
+    <meta name="twitter:title" content="C&KInsight | 씨앤케이인사이트" />
     <meta
       name="twitter:description"
       content="From Concept to Clearance, We Deliver Insight"
     />
     <meta
       name="twitter:image"
-      content="https://cnkinsight-homepage.vercel.app/og-ckinsight_brown.png"
+      content="https://www.cnkinsight.com/og-ckinsight_brown.png"
     />
 
+    <!-- ✅ 구조화 데이터 (Organization Schema) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "C&KInsight",
+        "legalName": "C&KINSIGHT Co., Ltd.",
+        "alternateName": "주식회사 씨앤케이인사이트",
+        "url": "https://www.cnkinsight.com",
+        "logo": "https://www.cnkinsight.com/MTY_C_b_round2_512.png",
+        "description": "의료기기의 목적과 특성에 맞춘 임상시험 설계·통계·인허가 컨설팅을 제공하는 전문기관. 체외진단의료기기(IVD), 디지털치료기기(DTx), AI 의료기기(AI-SaMD), 일반 의료기기 등 다양한 제품군을 지원.",
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "contactType": "customer service",
+            "availableLanguage": ["ko", "en"]
+          }
+        ]
+      }
+    </script>
+
+    <!-- 기본 스타일 -->
     <style>
       :root {
         color-scheme: light;
@@ -69,7 +99,6 @@
       canvas {
         max-width: 100%;
         height: auto;
-        filter: none !important;
         display: block;
       }
       .break-keep,
@@ -81,24 +110,20 @@
       }
     </style>
 
-    <title>C&KInsight</title>
-
     <!-- 구글 폰트 -->
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
 
-    <!-- ✅ KakaoTalk in-app → 브라우저 선택 창으로 열기 -->
+    <!-- ✅ KakaoTalk 인앱 브라우저 안내 -->
     <script>
       (function () {
         var ua = navigator.userAgent || "";
         var isKakao = /KAKAOTALK/i.test(ua);
         var isAndroid = /Android/i.test(ua);
         var isIOS = /iPhone|iPad|iPod/i.test(ua);
-
         if (!isKakao) return;
-
         var ORIGIN = location.origin;
         var HOST = location.host;
         var PATH = location.pathname + location.search;
@@ -123,7 +148,6 @@
 
         function attachBar() {
           if (document.getElementById("open-external-bar")) return;
-
           var bar = document.createElement("div");
           bar.id = "open-external-bar";
           bar.style.cssText =
@@ -151,15 +175,17 @@
         function showFallbackBar() {
           if (document.readyState === "loading") {
             document.addEventListener("DOMContentLoaded", attachBar, {
-              once: true,
+              once: true
             });
           } else {
             attachBar();
           }
         }
 
+        // 먼저 인텐트로 외부 브라우저 시도
         openExternal();
 
+        // 안 열리면 안내바 노출
         setTimeout(function () {
           if (document.visibilityState === "visible") showFallbackBar();
         }, 700);
