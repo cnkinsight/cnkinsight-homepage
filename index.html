@@ -2,7 +2,7 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <!-- 🔥 파비콘 -->
+    <!-- 파비콘 -->
     <link rel="icon" type="image/png" href="/MTY_C_b_round2_512.png" />
 
     <!-- 페이지 제목 -->
@@ -184,44 +184,55 @@
       rel="stylesheet"
     />
 
-    <!-- ✅ 카카오톡 인앱 브라우저 안내 (iOS 무한 로딩 방지 버전) -->
+    <!-- 카카오톡 인앱 브라우저 안내: 버튼 클릭 시
+         1) 먼저 크롬(intent + package=com.android.chrome) 시도
+         2) 실패(여전히 페이지 보이면) → 기본 브라우저(intent, package 없음)로 재시도 -->
     <script>
       (function () {
         var ua = navigator.userAgent || "";
         var isKakao = /KAKAOTALK/i.test(ua);
+        if (!isKakao) return;
+
+        var ORIGIN = location.origin;
+        var HOST = location.host;
+        var PATH = location.pathname + location.search;
+        var SCHEME = location.protocol.replace(":", "");
         var isAndroid = /Android/i.test(ua);
         var isIOS = /iPhone|iPad|iPod/i.test(ua);
 
-        if (!isKakao) return;
+        function openExternal() {
+          if (isAndroid) {
+            // 1) 크롬 우선 시도
+            var chromeIntent =
+              "intent://" +
+              HOST +
+              PATH +
+              "#Intent;scheme=" +
+              SCHEME +
+              ";package=com.android.chrome;end";
+            location.href = chromeIntent;
 
-        function openExternalAndroidOnce() {
-          if (!isAndroid) return;
-          try {
-            if (sessionStorage.getItem("ck-kakao-android-tried") === "1") return;
-            sessionStorage.setItem("ck-kakao-android-tried", "1");
-          } catch (e) {
-            // sessionStorage 불가해도 한 번만 시도하도록 설계
+            // 2) 크롬이 없어서 실패한 경우 → 여전히 이 페이지 보이면 기본 브라우저로 재시도
+            setTimeout(function () {
+              if (document.visibilityState === "visible") {
+                var defaultIntent =
+                  "intent://" +
+                  HOST +
+                  PATH +
+                  "#Intent;scheme=" +
+                  SCHEME +
+                  ";end";
+                location.href = defaultIntent;
+              }
+            }, 800);
+          } else if (isIOS) {
+            // iOS는 인앱 한계가 있어도 일단 같은 URL을 다시 열도록만 처리
+            location.href = ORIGIN + PATH;
           }
-
-          var scheme = location.protocol.replace(":", "");
-          var host = location.host;
-          var path = location.pathname + location.search + location.hash;
-
-          var intent =
-            "intent://" +
-            host +
-            path +
-            "#Intent;scheme=" +
-            scheme +
-            ";action=android.intent.action.VIEW;" +
-            "category=android.intent.category.BROWSABLE;end";
-
-          location.href = intent;
         }
 
         function attachBar() {
           if (document.getElementById("open-external-bar")) return;
-
           var bar = document.createElement("div");
           bar.id = "open-external-bar";
           bar.style.cssText =
@@ -229,80 +240,27 @@
             "background:#111;color:#fff;padding:12px 14px;border-radius:12px;" +
             "box-shadow:0 6px 20px rgba(0,0,0,.2);display:flex;align-items:center;justify-content:space-between;" +
             "gap:12px;font-size:14px;line-height:1.3;";
+          bar.innerHTML =
+            "<span>이 앱의 내장 브라우저에서는 레이아웃이 깨질 수 있어요.</span>" +
+            '<a id="open-external-btn" href="#" style="background:#D08700;color:#fff;padding:8px 12px;border-radius:9999px;text-decoration:none;white-space:nowrap;">외부 브라우저로 열기</a>';
 
-          var msg = document.createElement("span");
-          if (isAndroid) {
-            msg.textContent =
-              "카카오 인앱에서는 레이아웃이 깨질 수 있어요. 외부 브라우저로 여는 것을 권장합니다.";
-          } else if (isIOS) {
-            msg.textContent =
-              "카카오 인앱에서는 레이아웃이 깨질 수 있어요. 우측 상단 ••• 메뉴에서 ‘Safari로 열기’를 선택해 주세요.";
-          } else {
-            msg.textContent =
-              "카카오 인앱 브라우저에서는 일부 기능이 제한될 수 있습니다.";
-          }
-
-          var btn = document.createElement("a");
-          btn.href = "#";
-          btn.style.cssText =
-            "background:#D08700;color:#fff;padding:8px 12px;border-radius:9999px;text-decoration:none;white-space:nowrap;";
-
-          if (isAndroid) {
-            btn.textContent = "외부 브라우저로 열기";
-            btn.addEventListener(
-              "click",
-              function (e) {
-                e.preventDefault();
-                openExternalAndroidOnce();
-              },
-              { passive: false }
-            );
-          } else {
-            // iOS는 자동 Safari 이동이 안 되므로 안내 + 닫기 버튼만
-            btn.textContent = "닫기";
-            btn.addEventListener(
-              "click",
-              function (e) {
-                e.preventDefault();
-                try {
-                  bar.remove();
-                } catch (err) {
-                  bar.style.display = "none";
-                }
-              },
-              { passive: false }
-            );
-          }
-
-          bar.appendChild(msg);
-          bar.appendChild(btn);
           document.body.appendChild(bar);
+
+          document
+            .getElementById("open-external-btn")
+            .addEventListener("click", function (e) {
+              e.preventDefault();
+              openExternal();
+            });
         }
 
-        if (isAndroid) {
-          // 안드로이드는 외부 브라우저 시도 후, 안 되면 안내 바
-          openExternalAndroidOnce();
-          setTimeout(function () {
-            if (document.visibilityState === "visible") attachBar();
-          }, 700);
-        } else if (isIOS) {
-          // iOS: 자동 리다이렉트 없이 안내 바만 (무한 새로고침 방지)
-          if (document.readyState === "loading") {
-            document.addEventListener("DOMContentLoaded", attachBar, {
-              once: true
-            });
-          } else {
-            attachBar();
-          }
+        // 자동 튕김 없이, 안내 바만 붙이기
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", attachBar, {
+            once: true
+          });
         } else {
-          // 혹시 다른 인앱 케이스도 그냥 안내 바만
-          if (document.readyState === "loading") {
-            document.addEventListener("DOMContentLoaded", attachBar, {
-              once: true
-            });
-          } else {
-            attachBar();
-          }
+          attachBar();
         }
       })();
     </script>
