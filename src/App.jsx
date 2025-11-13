@@ -378,20 +378,44 @@ function AboutPage(){
         {/* 회사 소개 */}
         <section>
           <h3 className="text-xl font-bold mb-3">우리는 무엇을 다르게 하나요?</h3>
-           <p className="leading-relaxed mb-4">
-             C&KInsight는 단순 실행을 넘어, <strong className="ck-brand">고객과 함께 Insight를 설계하는 파트너</strong>입니다.
-           </p>
 
-           <p className="leading-relaxed mb-4">
-             연구 아이디어 단계에서 <strong>임상 설계 · 운영 · 분석</strong>, <br />
-             그리고 <strong>국내 허가 대응</strong>까지 전 과정을 전략적으로 연결합니다.
-           </p>   
+          {/* 🖥 PC/태블릿(md 이상) : 현재 모습 그대로 유지 */}
+          <div className="hidden md:block">
+            <p className="leading-relaxed mb-4">
+              C&KInsight는 단순 실행을 넘어,{" "}
+              <strong className="ck-brand">고객과 함께 Insight를 설계하는 파트너</strong>입니다.
+            </p>
 
-           <p className="leading-relaxed">
-            <strong>20년 이상의 통계 경험</strong>과 <strong>규제 기반 전문성</strong>을 가진 동일한 팀이 <br />
-            초기 가설부터 허가 심사 대응까지 <strong>일관되게 리드</strong>합니다.
-           </p>
+            <p className="leading-relaxed mb-4">
+              연구 아이디어 단계에서 <strong>임상 설계 · 운영 · 분석</strong>, <br />
+              그리고 <strong>국내 허가 대응</strong>까지 전 과정을 전략적으로 연결합니다.
+            </p>
+
+            <p className="leading-relaxed">
+              <strong>20년 이상의 통계 경험</strong>과 <strong>규제 기반 전문성</strong>을 가진 동일한 팀이 <br />
+              초기 가설부터 허가 심사 대응까지 <strong>일관되게 리드</strong>합니다.
+            </p>
+          </div>
+
+          {/* 📱 모바일(md 미만) : 줄바꿈 없이 자연스럽게 한 줄씩 */}
+          <div className="md:hidden">
+            <p className="leading-relaxed mb-4">
+              C&KInsight는 단순 실행을 넘어,{" "}
+              <strong className="ck-brand">고객과 함께 Insight를 설계하는 파트너</strong>입니다.
+            </p>
+
+            <p className="leading-relaxed mb-4">
+              연구 아이디어 단계에서 <strong>임상 설계 · 운영 · 분석</strong>, 그리고{" "}
+              <strong>국내 허가 대응</strong>까지 전 과정을 전략적으로 연결합니다.
+            </p>
+
+            <p className="leading-relaxed">
+              <strong>20년 이상의 통계 경험</strong>과 <strong>규제 기반 전문성</strong>을 가진 동일한 팀이
+              초기 가설부터 허가 심사 대응까지 <strong>일관되게 리드</strong>합니다.
+            </p>
+          </div>
         </section>
+
 
         {/* 수치/신뢰 지표 */}
         <section className="grid md:grid-cols-3 gap-6">
@@ -435,24 +459,28 @@ function AboutPage(){
             {/* Legend */}
             <ul className="space-y-5">
               <LegendItem title="R&D 가능성 검토:">
-                <span className="inline-block whitespace-nowrap">
-                적응증 정의, 임상적 타당성, 예비 통계 검토를 통해
-                <span className="font-semibold "> 개발 방향의 근거</span>를 마련합니다.
-                </span>
+                <p className="break-keep leading-relaxed">
+                  적응증 정의, 임상적 타당성, 예비 통계 검토를 통해
+                  <span className="font-semibold"> 개발 방향의 근거</span>를 마련합니다.
+                </p>
               </LegendItem>
 
               <LegendItem title="임상 운영·분석:">
-                <span className="inline-block whitespace-nowrap">
-                Protocol/SAP, 모니터링, EDC/DM 등 <span className="font-semibold">실행 가능한 설계와 분석 지원</span>을 제공합니다.
-                </span>
+                <p className="break-keep leading-relaxed">
+                  Protocol/SAP, 모니터링, EDC/DM 등
+                  <span className="font-semibold"> 실행 가능한 설계와 분석 지원</span>을 제공합니다.
+                </p>
               </LegendItem>
 
               <LegendItem title="규제 허가:">
-                <span className="inline-block whitespace-nowrap">
-                <span className="font-semibold">국내 허가(MFDS)</span>를 중심으로 지원하며,
-                FDA·CE 인증을 준비하는 업체에는</span> <br/><span className="font-semibold">연구 설계 및 문서화 가이드</span>를 제공합니다.
+                <p className="break-keep leading-relaxed">
+                  <span className="font-semibold">국내 허가(MFDS)</span>를 중심으로 지원하며,
+                  FDA·CE 인증을 준비하는 업체에는
+                  <span className="font-semibold"> 연구 설계 및 문서화 가이드</span>를 제공합니다.
+                </p>
               </LegendItem>
             </ul>
+
 
           </div>
         </section>
@@ -929,65 +957,82 @@ function InsightsPage() {
       title="Insights"
       breadcrumb={<NavLink to="/" className="hover:underline">Home</NavLink>}
     >
-      {/* ---- Hero ---- */}
-      <section className="mb-8">
-        <div className="rounded-2xl border border-gray-200 bg-white/90 shadow-sm p-6 md:p-8">
-          {/* 1) 상단 카테고리 + 제목(별도 행) */}
-          <p className="text-sm font-semibold text-[#D08700]">
-            C&KInsight · Philosophy
-          </p>
-          <h2 className="mt-3 text-3xl md:text-4xl font-bold leading-tight whitespace-normal md:whitespace-nowrap">
-            From <span className="text-[#D08700]">Disconnection</span> to{" "}
-            <span className="text-[#D08700]">Direction</span>
-          </h2>
+{/* ---- Hero ---- */}
+<section className="mb-8">
+  <div className="rounded-2xl border border-gray-200 bg-white/90 shadow-sm p-6 md:p-8">
+    {/* 1) 상단 카테고리 + 제목(별도 행) */}
+    <p className="text-sm font-semibold text-[#D08700]">
+      C&KInsight · Philosophy
+    </p>
 
-          {/* 2) (왼쪽) 문단+불릿  ↔  (오른쪽) 인포그래픽 */}
-          <div className="mt-6 flex flex-col md:flex-row items-start gap-6 md:gap-10">
-            {/* 왼쪽: 문단 + 불릿 묶음 */}
-            <div className="md:flex-1 min-w-0">   {/* ← 좌측 영역은 남는 폭 다 쓰고, 넘침 방지 */}
-              <p className="text-[16px] text-left leading-relaxed text-gray-700 mb-7">
-                복잡한 규제·임상·통계 과정에서 단계가 분절되면 <br/>결과는 목적에서 멀어집니다.<br/>
-                <span className="inline-block text-left">
-                  {/* ← nowrap 제거로 과도한 가로폭 방지 */}
-                  C&KInsight는 전체를 조망하는 <strong>Insight</strong>로 각 단계를 정렬하고,
-                </span>
-                <br/>
-                <span className="inline-block text-left ">
-                  <strong>목적 정합적 결과</strong>로 연결합니다.
-                </span>
-              </p>
+    {/* ---- Title (Responsive) ---- */}
+    <h2 className="mt-3 text-3xl md:text-4xl font-bold leading-tight">
 
-              <ul className="space-y-1.5 text-[15px] text-gray-700">
-                <li className="flex items-start gap-2">
-                  <span className="mt-[6px] h-2 w-2 rounded-full bg-[#D08700]" />
-                  Endpoint–Design–Power–Validation의 정렬
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="mt-[6px] h-2 w-2 rounded-full bg-[#D08700]" />
-                  심사자가 의도를 즉시 파악할 수 있는 설계/문서화
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="mt-[6px] h-2 w-2 rounded-full bg-[#D08700]" />
-                  Purpose-Aligned Outcome 달성
-                </li>
-              </ul>
-            </div>
+    <span className="block">
+      From <span className="text-[#D08700]">Disconnection</span>
+    </span>
 
-            {/* 오른쪽: 인포그래픽 */}
-            <figure className="md:shrink-0 md:basis-[380px] rounded-xl bg-[#FFFBF5] overflow-hidden">
-              {/* ↑ md에서 고정폭(basis) + shrink-0 로 줄바꿈/밀림 방지.
-                  폭 더 줄이고 싶으면 360~400px 사이로 조정 */}
-              <img
-                src="/insights-hero-v3.png"
-                alt="Insight Guides the Way: Unclear→Aligned (Insight→Design→Power→Outcome)"
-                className="block w-full h-auto object-contain object-top select-none"
-                loading="lazy"
-              />
-            </figure>
-          </div>
+    <span className="block">
+      to <span className="text-[#D08700]">Direction</span>
+    </span>
 
-        </div>
-      </section>
+</h2>
+
+    {/* 2) (왼쪽) 문단+불릿  ↔  (오른쪽) 인포그래픽 */}
+    <div className="mt-6 flex flex-col md:flex-row items-start gap-6 md:gap-10">
+      {/* 왼쪽: 문단 + 불릿 묶음 */}
+      <div className="md:flex-1 min-w-0">
+        <p className="text-[15px] md:text-[16px] leading-relaxed text-gray-700 mb-7">
+
+          {/* 📱 모바일: 자연스러운 문장 흐름 (줄바꿈 없음) */}
+          <span className="md:hidden">
+            복잡한 규제·임상·통계 과정에서 단계가 분절되면 결과는 목적에서 멀어집니다.<br/>
+            C&KInsight는 전체를 조망하는 <strong>Insight</strong>로 각 단계를 정렬하고,
+            <strong> 목적 정합적 결과</strong>로 연결합니다.
+          </span>
+
+          {/* 🖥 PC 이상(md+): 디자인 유지 (줄바꿈 명확하게 분리) */}
+          <span className="hidden md:inline">
+            복잡한 규제·임상·통계 과정에서 단계가 분절되면 <br />
+            결과는 목적에서 멀어집니다.
+            <br />
+            C&KInsight는 전체를 조망하는 <strong>Insight</strong>로 각 단계를 정렬하고,
+            <br />
+            <strong>목적 정합적 결과</strong>로 연결합니다.
+          </span>
+
+        </p>
+
+        <ul className="space-y-1.5 text-[15px] text-gray-700">
+          <li className="flex items-start gap-2">
+            <span className="mt-[6px] h-2 w-2 rounded-full bg-[#D08700]" />
+            Endpoint–Design–Power–Validation의 정렬
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="mt-[6px] h-2 w-2 rounded-full bg-[#D08700]" />
+            심사자가 의도를 즉시 파악할 수 있는 설계/문서화
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="mt-[6px] h-2 w-2 rounded-full bg-[#D08700]" />
+            Purpose-Aligned Outcome 달성
+          </li>
+        </ul>
+      </div>
+
+      {/* 오른쪽: 인포그래픽 */}
+      <figure className="md:shrink-0 md:basis-[380px] rounded-xl bg-[#FFFBF5] overflow-hidden">
+        {/* ↑ md에서 고정폭(basis) + shrink-0 로 줄바꿈/밀림 방지 */}
+        <img
+          src="/insights-hero-v3.png"
+          alt="Insight Guides the Way: Unclear→Aligned (Insight→Design→Power→Outcome)"
+          className="block w-full h-auto object-contain object-top select-none"
+          loading="lazy"
+        />
+      </figure>
+    </div>
+  </div>
+</section>
+
 
       {/* ---- 카드 그리드 ---- */}
       <p className="mb-4 text-gray-700">
