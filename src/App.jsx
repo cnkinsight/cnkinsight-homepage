@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { HashRouter as Router, Routes, Route, NavLink, useNavigate, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, NavLink, useNavigate, Navigate } from "react-router-dom";
 
 import QA from "./QA";        // ✅ 경로 수정: ./components/QA 가 아니라 ./QA
 
@@ -17,21 +17,10 @@ const GlobalStyle = () => (
   `}</style>
 );
 
-// ✅ 카톡(해시 라우터)에서도 쿼리스트링을 안정적으로 읽기 위한 유틸
+// ✅ 카톡·브라우저에서 쿼리스트링을 안정적으로 읽기 위한 유틸 (BrowserRouter 기준)
 function getQueryParam(name){
-  // 1) 일반 쿼리
   const usp = new URLSearchParams(window.location.search);
-  const v1 = usp.get(name);
-  if (v1 !== null && v1 !== undefined) return v1;
-  // 2) HashRouter( #/path?msg=... ) 형태 쿼리
-  const hash = window.location.hash || '';
-  const qIndex = hash.indexOf('?');
-  if (qIndex !== -1){
-    const qs = hash.slice(qIndex + 1);
-    const v2 = new URLSearchParams(qs).get(name);
-    if (v2 !== null && v2 !== undefined) return v2;
-  }
-  return null;
+  return usp.get(name);
 }
 
 // ---- Shared: Header & Footer ----
@@ -266,7 +255,6 @@ function Home(){
 
 
       {/* Insights preview */}
-      {/* Insights preview */}
       <section className="bg-gray-100 py-16 px-6">
         <div className="max-w-6xl mx-auto">
           <NavLink to="/insights" className="block text-center group">
@@ -421,7 +409,7 @@ function AboutPage(){
         <section className="grid md:grid-cols-3 gap-6">
           <div className="p-6 bg-gray-50 rounded-xl border"><div className="text-3xl font-extrabold ck-brand">10+년</div><div className="text-sm mt-1">의료기기 임상/허가 컨설팅</div></div>
           <div className="p-6 bg-gray-50 rounded-xl border"><div className="text-3xl font-extrabold ck-brand">100+건</div><div className="text-sm mt-1">프로토콜/CSR/제출 패키지</div></div>
-          <div className="p-6 bg-gray-50 rounded-xl border"><div className="text-3xl font-extrabold ck-brand">DTx · AI‑SaMD · IVD</div><div className="text-sm mt-1">최신 분야 특화 역량</div></div>
+          <div className="p-6 bg-gray-50 rounded-xl border"><div className="text-3xl font-extrabold ck-brand">DTx · AI-SaMD · IVD</div><div className="text-sm mt-1">최신 분야 특화 역량</div></div>
         </section>
 
         {/* 비전 벤다이어그램 (SVG) */}
@@ -488,7 +476,7 @@ function AboutPage(){
         {/* 왜 C&KInsight인가 */}
         <section className="grid md:grid-cols-2 gap-6">
           <div className="p-6 rounded-xl border text-left">
-            <h4 className="font-semibold mb-2">One‑Team Execution</h4>
+            <h4 className="font-semibold mb-2">One-Team Execution</h4>
             <p className="text-[13.5px] md:text-sm leading-6 tracking-tight">
               초기 가설부터 허가 심사까지 동일한 코어 팀이 리드하여 의사결정의 일관성을 유지합니다.</p>
           </div>
@@ -586,7 +574,7 @@ function ServicesPage(){
           <thead className="bg-gray-50">
             <tr className="text-left">
               <th className="p-4">항목</th>
-              <th className="p-4">Full‑Scope</th>
+              <th className="p-4">Full-Scope</th>
               <th className="p-4">Partial</th>
             </tr>
           </thead>
@@ -615,7 +603,7 @@ function ServicesPage(){
       <div className="mb-10">
         <h3 className="text-xl font-bold mb-3">표준 수행 프로세스 (예)</h3>
         <ol className="grid grid-cols-2 md:grid-cols-6 gap-4">
-          {['Kick‑off','Protocol/SAP','CM/Monitoring','EDC/DM','Stats & CSR','Submission'].map((s,i)=> (
+          {['Kick-off','Protocol/SAP','CM/Monitoring','EDC/DM','Stats & CSR','Submission'].map((s,i)=> (
             <li key={s} className="bg-white rounded-xl border p-4 text-center shadow-sm">
               <div className="text-3xl font-extrabold ck-brand">{i+1}</div>
               <div className="mt-1 text-sm break-words">{s}</div>
@@ -628,7 +616,7 @@ function ServicesPage(){
       <div>
         <h3 className="text-xl font-bold mb-3">자주 받는 질문(FAQ)</h3>
         <div className="grid md:grid-cols-2 gap-4 tracking-tight">
-          <QA q="Partial로 시작했다가 Full‑Scope로 전환할 수 있나요?" 
+          <QA q="Partial로 시작했다가 Full-Scope로 전환할 수 있나요?" 
                a="네, 가능합니다.<br/>
                   진행 중인 Partial 범위를 검토한 뒤, 일정과 인력 구성을
                   Full-Scope 체계로 확장하여 관리합니다.
@@ -688,7 +676,7 @@ function ServiceLayout({title, children}){
 }
 function FullScopePage(){
   return (
-    <ServiceLayout title="Full‑Scope CRO">
+    <ServiceLayout title="Full-Scope CRO">
       <p className="mb-6">
         <span className="font-semibold text-yellow-600">
         프로토콜 설계부터 모니터링, 데이터 관리(EDC/DM), 통계 분석, CSR 작성</span>까지 임상시험 전 과정을 일관성 있게 수행합니다. <br /> 
@@ -768,7 +756,6 @@ function ExpertisePage(){
   );
 }
 
-// ---- Cases Overview ----
 // ---- Cases Overview ----
 function CasesPage() {
   const isMobileUA = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
