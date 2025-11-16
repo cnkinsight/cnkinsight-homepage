@@ -1,21 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Home -->
   <url>
     <loc>https://www.cnkinsight.com/</loc>
   </url>
+
+  <!-- About -->
   <url>
     <loc>https://www.cnkinsight.com/about</loc>
   </url>
+
+  <!-- Services -->
   <url>
     <loc>https://www.cnkinsight.com/services</loc>
   </url>
   <url>
+    <loc>https://www.cnkinsight.com/services/full-scope</loc>
+  </url>
+  <url>
+    <loc>https://www.cnkinsight.com/services/partial</loc>
+  </url>
+  <url>
+    <loc>https://www.cnkinsight.com/services/regulatory</loc>
+  </url>
+  <url>
+    <loc>https://www.cnkinsight.com/services/expertise</loc>
+  </url>
+
+  <!-- Case Studies -->
+  <url>
     <loc>https://www.cnkinsight.com/cases</loc>
   </url>
+  <url>
+    <loc>https://www.cnkinsight.com/cases/dtx</loc>
+  </url>
+  <url>
+    <loc>https://www.cnkinsight.com/cases/ai-samd</loc>
+  </url>
+  <url>
+    <loc>https://www.cnkinsight.com/cases/ivd-qual</loc>
+  </url>
+  <url>
+    <loc>https://www.cnkinsight.com/cases/ivd-quant</loc>
+  </url>
+  <url>
+    <loc>https://www.cnkinsight.com/cases/med-supplies</loc>
+  </url>
+
+  <!-- Insights -->
   <url>
     <loc>https://www.cnkinsight.com/insights</loc>
   </url>
   <url>
+    <loc>https://www.cnkinsight.com/insights/samplesize</loc>
+  </url>
+  <url>
+    <loc>https://www.cnkinsight.com/insights/ai-samd</loc>
+  </url>
+  <url>
+    <loc>https://www.cnkinsight.com/insights/dtx</loc>
+  </url>
+  <url>
+    <loc>https://www.cnkinsight.com/insights/ivd</loc>
+  </url>
+
+  <!-- Contact -->
+  <url>
     <loc>https://www.cnkinsight.com/contact</loc>
   </url>
+
 </urlset>
