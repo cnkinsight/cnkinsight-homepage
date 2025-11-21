@@ -634,7 +634,7 @@ function ServicesPage(){
                실제 설계는 적응증의 특성에 따라 달라집니다.
                예를 들어 폐렴 진단 AI는 기존 판독 대비 민감도·특이도 및 AUC 입증이 핵심이며, 
                 이를 위해 데이터셋 다양성, Gold standard 정의, 독립 검증 코호트 확보가 필수입니다."/>
-          <QA q="IMFDS의 임상적 성능시험과 EU IVDR의 Clinical Performance Evaluation은 무엇이 다른가요?" 
+          <QA q="MFDS의 임상적 성능시험과 EU IVDR의 Clinical Performance Evaluation은 무엇이 다른가요?" 
               a="EU IVDR에서는 문헌, 임상 경험, 임상적 성능시험 데이터를
                  모두 통합하여 Clinical Evidence로 정의하고,
                  이를 Clinical Performance Evaluation(CPE) 안에서 종합적으로
